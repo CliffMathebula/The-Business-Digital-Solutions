@@ -56,23 +56,19 @@
                 <ul class="main_menu">
 
                     <li>
-                        <a href="#Products"><small><strong> Products & Services </strong></small></a>
+                        <a href="#Products" data-toggle="tab" role="tab"><small><strong>Domains</strong></small></a>
                     </li>
 
                     <li>
-                        <a href="#domains"><small><strong>Domains</strong></small></a>
+                        <a href="#hosting" data-toggle="tab" role="tab"><small><strong>Hosting</strong></small></a>
                     </li>
 
                     <li>
-                        <a href="#hosting"><small><strong>Hosting</strong></small></a>
+                        <a href="#web-development" data-toggle="tab" role="tab"><small><strong>Web Development</strong></small></a>
                     </li>
 
                     <li>
-                        <a href="#web-development"><small><strong>Web Development</strong></small></a>
-                    </li>
-
-                    <li>
-                        <a href="#app-development"><small><strong>App Development</strong></small></a>
+                        <a href="#app-development" data-toggle="tab" role="tab"><small><strong>App Development</strong></small></a>
                     </li>
 
                     <li>
@@ -143,24 +139,21 @@
                 <div class="wrap_menu">
                     <nav class="menu">
                         <ul class="main_menu">
+
                             <li>
-                                <a href="#Products">Products & Services</a>
+                                <a href="#domains" data-toggle="tab" role="tab">Domains</a>
                             </li>
 
                             <li>
-                                <a href="#domains">Domains</a>
+                                <a href="#hosting" data-toggle="tab" role="tab">Hosting</a>
                             </li>
 
                             <li>
-                                <a href="#hosting">Hosting</a>
+                                <a href="#web-development" data-toggle="tab" role="tab">Web Development</a>
                             </li>
 
                             <li>
-                                <a href="#web-development">Web Development</a>
-                            </li>
-
-                            <li>
-                                <a href="#app-development">App Development</a>
+                                <a href="#app-development" data-toggle="tab" role="tab"> App Development</a>
                             </li>
                             <li>
                                 <a href="#contact">Contact</a>
@@ -240,37 +233,28 @@
                         </div>
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="index.html">Home</a>
-                        <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+
+                    <li>
+                        <a href="#domains" data-toggle="tab" role="tab">Domains</a>
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="#Products">Products & Services</a>
+                    <li>
+                        <a href="#hosting" data-toggle="tab" role="tab">Hosting</a>
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="product.html">Domains</a>
+                    <li>
+                        <a href="#web-development" data-toggle="tab" role="tab">Web Development</a>
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="cart.html">Hosting</a>
+                    <li>
+                        <a href="#app-development" data-toggle="tab" role="tab"> App Development</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="blog.html">Web Development</a>
-                    </li>
-
-                    <li class="item-menu-mobile">
-                        <a href="#app-development">App Development</a>
-                    </li>
-
-                    <li class="item-menu-mobile">
+                    <li>
                         <a href="about.html">About</a>
-                    </li>
-
-                    <li class="item-menu-mobile">
-                        <a href="contact.html">Contact</a>
                     </li>
                 </ul>
             </nav>
@@ -388,63 +372,53 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#hosting" role="tab">Hosting</a>
                     </li>
-
                 </ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content p-t-35">
-
                     <!-- Web Development -->
                     <div class="tab-pane fade show active" id="web-development" role="tabpanel">
                         <div class="row">
-
                             <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                                 <!-- Block2 -->
                                 <div class="block2">
                                     <div class="card">
                                         <div class="card-body">
-
                                             <div class="block2-txt p-t-20 bg-default">
                                                 <a href="#" class="block2-name dis-block s-text3 p-b-5 text-center ">
-                                                    Mobile Friendly Website
+                                                    Mobile Friendly Web Applications
                                                 </a>
                                                 <br />
-                                                <span class="block2-name dis-block s-text3 p-b-5 bg-info">
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-primary text-center bg-warning  ">
-                                                        From R1000.00 Per Design </p>
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-white text-center ">
-                                                        <strong>R120.00 Per Month </strong>
-                                                    </p>
+                                                <span class="block2-name dis-block s-text3 p-b-5 bg-success">
                                                 </span>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-primary text-center bg-warning  ">
+                                                    From R1000.00 Per Design </p>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-white text-center bg-success">
+                                                    <small><strong>R120.00 Per Month</strong></small>
+                                                </p>
                                                 <br /><br />
                                                 <p class="block2-name dis-block s-text3 p-b-5 ">
-                                                    <i class="glyphicon glyphicon-hdd text-info"></i> &nbsp; 10 Gig
+                                                    <i class="ti-cloud text-success"></i> &nbsp; 10 Gig
                                                     Hosting Space</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5 "><i class="glyphicon glyphicon-cloud text-info"></i> &nbsp; Free
+                                                <p class="block2-name dis-block s-text3 p-b-5 "><i class="ti-world text-success"></i> &nbsp; Free
                                                     Domain Name
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Free SEO
+                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="ti-search text-success"></i> &nbsp; Free SEO
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-lock text-info"></i> &nbsp; Free SSL
+                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="ti-lock text-success"></i> &nbsp; Free SSL
                                                     Certificate</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-envelope text-info"></i> &nbsp;
+                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="ti-email text-success"></i> &nbsp;
                                                     Unlimited
                                                     Emails</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Maximum
+                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="ti-book text-success"></i> &nbsp; Maximum
                                                     of 15 Pages
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-tasks  text-info"></i>
+                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="ti-server text-success"></i>
                                                     &nbsp;Unlimited Databases
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-save  text-info"></i> &nbsp;Weekly
+                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="ti-cloud-down  text-success"></i> &nbsp;Weekly
                                                     Backups</p>
-
                                                 <div class="block2-overlay trans-0-4">
-                                                    <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                                        <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                                        <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                                    </a>
-
                                                     <div class="block2-btn-addcart w-size1 trans-0-4">
                                                         <!-- Button -->
                                                         <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -453,63 +427,60 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
                             <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                                 <!-- Block2 -->
                                 <div class="block2">
-
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="block2-txt p-t-20 bg-default">
-                                                <a href="#" class="block2-name dis-block s-text3 p-b-5 text-center ">
-                                                    E-Commerce Website
-                                                </a>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text-center ">
+                                                    E-Commerce Web Applications
+                                                </p>
                                                 <br />
-                                                <span class="block2-name dis-block s-text3 p-b-5 bg-info">
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-primary text-center bg-warning ">
-                                                        From R2000.00 Per Design
-                                                    </p>
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-white text-center ">
-                                                        <strong>R150.00 Per Month </strong>
-                                                    </p>
+                                                <span class="block2-name dis-block s-text3 p-b-5 bg-success">
                                                 </span>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-primary text-center bg-warning ">
+                                                    From R2000.00 Per Design
+                                                </p>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-white text-center bg-success">
+                                                    <small><strong>R150.00 Per Month </strong></small>
+                                                </p>
                                                 <br /><br />
                                                 <p class="block2-name dis-block s-text3 p-b-5 ">
-                                                    <i class="glyphicon glyphicon-hdd text-info"></i> &nbsp; 20 Gig
+                                                    <i class="ti-cloud text-success"></i> &nbsp; 20 Gig
                                                     Hosting Space</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5 "><i class="glyphicon glyphicon-cloud text-info"></i> &nbsp; Free
+                                                <p class="block2-name dis-block s-text3 p-b-5 ">
+                                                    <i class="ti-world text-success"></i> &nbsp; Free
                                                     Domain Name
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-lock text-info"></i> &nbsp; Free SSL
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-lock text-success"></i> &nbsp; Free SSL
                                                     Certificate</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Free SEO
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-search text-success"></i> &nbsp; Free SEO
                                                 </p>
-
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-envelope text-info"></i> &nbsp;
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-email text-success"></i> &nbsp;
                                                     Unlimited
                                                     Emails</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Maximum
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-book text-success"></i> &nbsp; Maximum
                                                     of 20 Pages
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-tasks  text-info"></i>
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-server  text-success"></i>
                                                     &nbsp;Unlimited Databases
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-save  text-info"></i> &nbsp;Weekly
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-cloud-down  text-success"></i> &nbsp;Weekly
                                                     Backups</p>
-
                                             </div>
                                             <div class="block2-overlay trans-0-4">
-                                                <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                                    <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                                    <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                                </a>
-
                                                 <div class="block2-btn-addcart w-size1 trans-0-4">
                                                     <!-- Button -->
                                                     <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -529,49 +500,48 @@
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="block2-txt p-t-20 bg-default">
-                                                <a href="#" class="block2-name dis-block s-text3 p-b-5 text-center ">
-                                                    CRM Web Application
-                                                </a>
+                                                <p class="block2-name dis-block s-text3 text-dark p-b-5 text-center ">
+                                                    Commercial CRM Web Applications
+                                                </p>
                                                 <br />
-                                                <span class="block2-name dis-block s-text3 p-b-5 bg-info">
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-primary text-center bg-warning ">
-                                                        From R3000.00 Per Design
-                                                    </p>
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-white text-center ">
-                                                        <strong>R200.00 Per Month </strong>
-                                                    </p>
+                                                <span class="block2-name dis-block s-text3 p-b-5 bg-success">
                                                 </span>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-primary text-center bg-warning ">
+                                                    From R3000.00 Per Design
+                                                </p>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-white text-center bg-success">
+                                                    <small><strong>R200.00 Per Month</strong></small>
+                                                </p>
                                                 <br /><br />
                                                 <p class="block2-name dis-block s-text3 p-b-5 ">
-                                                    <i class="glyphicon glyphicon-hdd text-info"></i> &nbsp; 30 Gig
+                                                    <i class="ti-cloud text-success"></i> &nbsp; 30 Gig
                                                     Hosting Space</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5 "><i class="glyphicon glyphicon-cloud text-info"></i> &nbsp; Free
+                                                <p class="block2-name dis-block s-text3 p-b-5 ">
+                                                    <i class="ti-world text-success"></i> &nbsp; Free
                                                     Domain Name
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-lock text-info"></i> &nbsp; Free SSL
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-lock text-success"></i> &nbsp; Free SSL
                                                     Certificate</p>
-
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Free SEO
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-search text-success"></i> &nbsp; Free SEO
                                                 </p>
-
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-envelope text-info"></i> &nbsp;
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-email text-success"></i> &nbsp;
                                                     Unlimited
                                                     Emails</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Unlimited Pages
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-book text-success"></i> &nbsp; Unlimited Pages
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-tasks  text-info"></i>
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-server  text-success"></i>
                                                     &nbsp;Unlimited Databases
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-save  text-info"></i> &nbsp;Weekly
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-cloud-down  text-success"></i> &nbsp;Weekly
                                                     Backups</p>
-
                                             </div>
                                             <div class="block2-overlay trans-0-4">
-                                                <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                                    <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                                    <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                                </a>
-
                                                 <div class="block2-btn-addcart w-size1 trans-0-4">
                                                     <!-- Button -->
                                                     <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -587,56 +557,54 @@
                             <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                                 <!-- Block2 -->
                                 <div class="block2">
-
                                     <div class="card">
                                         <div class="card-body">
-                                            <!--
-                                            <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                                <img src="images/item-05.jpeg" height="200" alt="IMG-PRODUCT">
-                                            </div>-->
-
                                             <div class="block2-txt p-t-20 bg-default">
-                                                <a href="#" class="block2-name dis-block s-text3 p-b-5 text-center ">
-                                                    Company Internal System
-                                                </a>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text-center ">
+                                                    Company Internal System Web Application
+                                                </p>
                                                 <br />
-                                                <span class="block2-name dis-block s-text3 p-b-5 bg-info">
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-primary bg-warning text-center  ">
-                                                        From R5000.00 Per Design
-                                                    </p>
-                                                    <p class="block2-name dis-block s-text3 p-b-5 text text-white  text-center ">
-                                                        <strong>From R250.00 Per Month</strong>
-                                                    </p>
+                                                <span class="block2-name dis-block s-text3 p-b-5 bg-success">
                                                 </span>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-primary bg-warning text-center  ">
+                                                    From R5000.00 Per Design
+                                                </p>
+                                                <p class="block2-name dis-block s-text3 p-b-5 text text-white  text-center bg-success">
+                                                    <small><strong>From R250.00 Per Month</strong></small>
+                                                </p>
                                                 <br /><br />
                                                 <p class="block2-name dis-block s-text3 p-b-5 ">
-                                                    <i class="glyphicon glyphicon-hdd text-info"></i> &nbsp; 50 Gig
+                                                    <i class="ti-cloud text-success"></i> &nbsp; 50 Gig
                                                     Hosting Space</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5 "><i class="glyphicon glyphicon-cloud text-info"></i> &nbsp; Free
+                                                <p class="block2-name dis-block s-text3 p-b-5 ">
+                                                    <i class="ti-world text-success"></i> &nbsp; Free
                                                     Domain Name
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Free SEO
-                                                </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-lock text-info"></i> &nbsp; Free SSL
+
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-lock text-success"></i> &nbsp; Free SSL
                                                     Certificate</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-envelope text-info"></i> &nbsp;
+
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-search text-success"></i> &nbsp; Free SEO
+                                                </p>
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-email text-success"></i> &nbsp;
                                                     Unlimited
                                                     Emails</p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-book text-info"></i> &nbsp; Unlimited Pages
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-book text-success"></i> &nbsp; Unlimited Pages
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-tasks  text-info"></i>
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-server  text-success"></i>
                                                     &nbsp;Unlimited Databases
                                                 </p>
-                                                <p class="block2-name dis-block s-text3 p-b-5"><i class="glyphicon glyphicon-save  text-info"></i> &nbsp;Weekly
+                                                <p class="block2-name dis-block s-text3 p-b-5">
+                                                    <i class="ti-cloud-down  text-success"></i> &nbsp;Weekly
                                                     Backups</p>
 
                                             </div>
                                             <div class="block2-overlay trans-0-4">
-                                                <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                                    <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                                    <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                                </a>
-
                                                 <div class="block2-btn-addcart w-size1 trans-0-4">
                                                     <!-- Button -->
                                                     <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
@@ -722,11 +690,11 @@
                                                 <a href="#" class="block2-name dis-block s-text3 p-b-5 text-center ">
                                                     Tools & Utility Apps
                                                 </a>
-                                                <br/>
+                                                <br />
                                                 <span class="block2-name dis-block s-text3 p-b-5 bg-primary">
                                                 </span>
-                                                <br/>
-                                                 <br />
+                                                <br />
+                                                <br />
                                             </div>
                                             <div class="block2-overlay trans-0-4">
                                                 <div class="block2-btn-addcart w-size1 trans-0-4">
@@ -830,10 +798,9 @@
                             <div class="block2">
                                 <div class="card">
                                     <div class="card-body">
-
                                         <div class="block2-txt p-t-20 bg-default">
                                             <a href="#" class="block2-name dis-block s-text3 p-b-5 text-center ">
-                                                Mind-Mapping Apps 
+                                                Mind-Mapping Apps
                                             </a>
                                             <br />
                                             <span class="block2-name dis-block s-text3 p-b-5 bg-info">
@@ -852,360 +819,91 @@
                                 </div>
                             </div>
                         </div>
-                </div>
-
-                <!-- Domains Section -->
-                <div class="tab-pane fade" id="domains" role="tabpanel">
-                    <div class="container mt-4">
-                        <div class="row">
-                            <div class="col align-self-center mt-4">
-                                <br />
-                                <div class="text-center">
-                                    <form class="leave-comment" id="domain_form">
-                                        <h4 class="m-text26 p-b-36 p-t-15">
-                                            Check Domain Availability
-                                        </h4>
-                                        <p class="flex-c-m size22 bg-info s-text21 pos-relative mt-4" id="domain_status">
-                                        </p>
-                                        <div class="form-group row flex-v-center">
-                                            <div class="col-md-10">
-                                                <p class="input-group text-center">
-                                                    <input id="searchBar" class="form-control text-dark border border-dark text-xl" type="text" name="domain" placeholder="Search domain name..." value="<?php if (isset($_GET['domain'])) {
-                                                                                                                                                                                                                echo $_GET['domain'];
-                                                                                                                                                                                                            } ?>">
-                                                    <span>
-                                                        <select name="name" id="name" class="sizefull s-text7 p-l-22 p-r-22 ">
-                                                            <option value=".co.za">.co.za</option>
-                                                            <option value=".com">.com</option>
-                                                            <option value=".net">.net</option>
-                                                            <option value=".org">org</option>
-                                                            <option value=".info">.info</option>
-                                                            <option value=".mobi">.mobi</option>
-                                                        </select>
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <div class="w-size25">
-                                                <!-- Button -->
-                                                <button class="flex-c-m size4 bg1 bo-rad-23 hov1 m-text3 trans-0-4" type="submit" id="btnSearch" name="btnSearch">
-                                                    Search &nbsp; <i class="fa fa-search"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <p class="flex-c-m size22 bg-info s-text21 pos-relative mt-4" id="suggested1">
-                        <strong>Suggested Domain Names </strong>
-                    </p>
 
-                    <table class="table table-striped" id="suggested2">
-                        <thead>
-                            <tr>
-                                <th scope="col">
-                                    <p> Domain Names </p>
-                                </th>
-                                <th scope="col">
-                                    <p> Price </p>
-                                </th>
-                                <th scope="col">
-                                    <p> Billing Cycle </p>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody id="suggested" class="col-6">
-
-                        </tbody>
-                    </table>
-                </div>
-
-
-
-
-                <!-- Hosting Products -->
-                <div class="tab-pane fade" id="hosting" role="tabpanel">
-                    <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-                                    <img src="images/item-02.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
+                    <!-- Domains Section -->
+                    <div class="tab-pane fade" id="domains" role="tabpanel">
+                        <div class="container mt-4">
+                            <div class="row">
+                                <div class="col align-self-center mt-4">
+                                    <br />
+                                    <div class="text-center">
+                                        <form class="leave-comment" id="domain_form">
+                                            <h4 class="m-text26 p-b-36 p-t-15">
+                                                Check Domain Availability
+                                            </h4>
+                                            <p class="flex-c-m size22 bg-info s-text21 pos-relative mt-4" id="domain_status">
+                                            </p>
+                                            <div class="form-group row flex-v-center">
+                                                <div class="col-md-10">
+                                                    <p class="input-group text-center">
+                                                        <input id="searchBar" class="form-control text-dark border border-dark text-xl" type="text" name="domain" placeholder="Search domain name..." value="<?php if (isset($_GET['domain'])) {
+                                                                                                                                                                                                                    echo $_GET['domain'];
+                                                                                                                                                                                                                } ?>">
+                                                        <span>
+                                                            <select name="name" id="name" class="sizefull s-text7 p-l-22 p-r-22 ">
+                                                                <option value=".co.za">.co.za</option>
+                                                                <option value=".com">.com</option>
+                                                                <option value=".net">.net</option>
+                                                                <option value=".org">org</option>
+                                                                <option value=".info">.info</option>
+                                                                <option value=".mobi">.mobi</option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                </div>
+                                                <div class="w-size25">
+                                                    <!-- Button -->
+                                                    <button class="flex-c-m size4 bg1 bo-rad-23 hov1 m-text3 trans-0-4" type="submit" id="btnSearch" name="btnSearch">
+                                                        Search &nbsp; <i class="fa fa-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Herschel supply co 25l
-                                    </a>
-
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $75.00
-                                    </span>
                                 </div>
                             </div>
                         </div>
+                        <br />
+                        <br />
+                        <br />
+                        <br />
+                        <p class="flex-c-m size22 bg-info s-text21 pos-relative mt-4" id="suggested1">
+                            <strong>Suggested Domain Names </strong>
+                        </p>
 
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="images/item-03.jpg" alt="IMG-PRODUCT">
+                        <table class="table table-striped" id="suggested2">
+                            <thead>
+                                <tr>
+                                    <th scope="col">
+                                        <p> Domain Names </p>
+                                    </th>
+                                    <th scope="col">
+                                        <p> Price </p>
+                                    </th>
+                                    <th scope="col">
+                                        <p> Billing Cycle </p>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="suggested" class="col-6">
 
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
+                            </tbody>
+                        </table>
+                    </div>
 
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <!-- Hosting Products -->
+                    <div class="tab-pane fade" id="hosting" role="tabpanel">
+                        <div class="row" id="hosting_packages">
 
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Denim jacket blue
-                                    </a>
+                            <?php
+                            include 'models/hosting_packages.php';
+                            ?>
 
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $92.50
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="images/item-05.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Coach slim easton black
-                                    </a>
-
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $165.90
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-                                    <img src="images/item-07.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Frayed denim shorts
-                                    </a>
-
-                                    <span class="block2-oldprice m-text7 p-r-5">
-                                        $29.50
-                                    </span>
-
-                                    <span class="block2-newprice m-text8 p-r-5">
-                                        $15.90
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="images/item-07.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Coach slim easton black
-                                    </a>
-
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $165.90
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelsale">
-                                    <img src="images/item-11.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Frayed denim shorts
-                                    </a>
-
-                                    <span class="block2-oldprice m-text7 p-r-5">
-                                        $29.50
-                                    </span>
-
-                                    <span class="block2-newprice m-text8 p-r-5">
-                                        $15.90
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative block2-labelnew">
-                                    <img src="images/item-12.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Herschel supply co 25l
-                                    </a>
-
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $75.00
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="images/item-15.jpg" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <a href="#" class="block2-btn-addwishlist hov-pointer trans-0-4">
-                                            <i class="icon-wishlist icon_heart_alt" aria-hidden="true"></i>
-                                            <i class="icon-wishlist icon_heart dis-none" aria-hidden="true"></i>
-                                        </a>
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                Add to Cart
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5">
-                                        Denim jacket blue
-                                    </a>
-
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $92.50
-                                    </span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -1273,7 +971,7 @@
     <section>
         <div class="sec-title p-b-52 p-l-15 p-r-15">
 
-            <form class="leave-comment" id="email_form" action="includes/contact-form.php" method="post">
+            <form class="leave-comment" id="email_form">
 
                 <h4 class="m-text26 p-b-36 p-t-15 t-center">
                     Send us your message
@@ -1485,8 +1183,8 @@
             checkDomain();
             suggestedDomain();
             emailMessage();
-
-
+            hostingPackages();
+            addToCart();
         });
 
         function checkDomain() {
@@ -1557,6 +1255,11 @@
                 return false;
             });
         }
+
+
+
+
+        function addToCart() {}
     </script>
 
 
@@ -1589,7 +1292,24 @@
         $('.block2-btn-addcart').each(function() {
             var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
             $(this).on('click', function() {
-                swal(nameProduct, "is added to cart !", "success");
+
+                //submit form
+                $('#add_to_cart_form').submit(function() {
+
+                    var form_values = $('#add_to_cart_form').serialize();
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'cart.php',
+                        data: form_values,
+                        success: function(data) {
+                            swal(nameProduct, "is added to cart !", "success");
+                        }
+                    });
+
+                    return false;
+                });
+
             });
         });
 
