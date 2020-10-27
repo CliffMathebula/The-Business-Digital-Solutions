@@ -288,7 +288,7 @@ $db_handle = new DBController();
 
     if (!empty($_POST["action"])) {
         switch ($_POST["action"]) {
-            case "add":
+            case "add_hosting":
                 if (!empty($_POST["quantity"])) {
                     $productByCode = $db_handle->runQuery("SELECT * FROM hosting_packages WHERE code='" . $_POST["code"] . "'");
 
@@ -470,7 +470,17 @@ $db_handle = new DBController();
     <?php
                     } else {
     ?>
-        <div class="alert alert-danger text-center">Your Cart is Empty</div>
+        
+	<div class="flex-c-m size22 bg0 s-text21 pos-relative">
+		Your Cart Is Empty!
+		<a href="index.php#Products" class="s-text22 hov6 p-l-5">
+			Shop Now
+		</a>
+
+		<button class="flex-c-m pos2 size23 colorwhite eff3 trans-0-4 btn-romove-top-noti">
+			<i class="fa fa-remove fs-13" aria-hidden="true"></i>
+		</button>
+	</div>
     <?php
                     }
     ?>

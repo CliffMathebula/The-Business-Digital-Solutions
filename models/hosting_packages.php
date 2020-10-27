@@ -59,7 +59,7 @@ if (!empty($product_array)) {
                                         <!-- Button -->
 
                                         <input type="hidden" name="quantity" value="1" size="2" />
-                                        <input type="hidden" name="action" value="add"  />
+                                        <input type="hidden" name="action" value="add_hosting"  />
                                         <input type="hidden" name="code" value="<?php echo $product_array[$key]["code"]; ?>" size="2" />
                                         <button  class="flex-c-m size4 bg-info bo-rad-23 hov1 s-text1 trans-0-4">
                                             Add To Cart
