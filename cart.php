@@ -1,9 +1,32 @@
 <?php
 session_start();
-require_once("models/dbcontroller.php");
-$db_handle = new DBController();
 
+echo $_REQUEST["action"];
+
+echo $_REQUEST["code"];
+
+if (!empty($_REQUEST["action"])) {
+    switch ($_REQUEST["action"]) {
+
+        case "remove":
+            if (!empty($_SESSION["cart_item"])) {
+                foreach ($_SESSION["cart_item"] as $k => $v) {
+                    if ($_REQUEST["code"] == $k)
+                        unset($_SESSION["cart_item"][$k]);
+                    if (empty($_SESSION["cart_item"]))
+                        unset($_SESSION["cart_item"]);
+                }
+            }
+            break;
+        case "empty":
+            unset($_SESSION["cart_item"]);
+            break;
+    }
+}
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -284,60 +307,13 @@ $db_handle = new DBController();
     </header>
 
 
-    <?php
-
-    if (!empty($_POST["action"])) {
-        switch ($_POST["action"]) {
-            case "add_hosting":
-                if (!empty($_POST["quantity"])) {
-                    $productByCode = $db_handle->runQuery("SELECT * FROM hosting_packages WHERE code='" . $_POST["code"] . "'");
-
-                    $itemArray = array($productByCode[0]["code"] => array('product_name' => $productByCode[0]["product_name"], 'code' => $productByCode[0]["code"], 'quantity' => $_POST["quantity"], 'price_per_month' => $productByCode[0]["price_per_month"]));
-
-                    if (!empty($_SESSION["cart_item"])) {
-                        if (in_array($productByCode[0]["code"], array_keys($_SESSION["cart_item"]))) {
-                            foreach ($_SESSION["cart_item"] as $k => $v) {
-                                if ($productByCode[0]["code"] == $k) {
-                                    if (empty($_SESSION["cart_item"][$k]["quantity"])) {
-                                        $_SESSION["cart_item"][$k]["quantity"] = 0;
-                                    }
-                                    $_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
-                                }
-                            }
-                        } else {
-                            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
-                        }
-                    } else {
-                        $_SESSION["cart_item"] = $itemArray;
-                    }
-                }
-                break;
-        }
-    }
-
-    if ($_GET['action'] == 'remove') {
-        if (!empty($_SESSION["cart_item"])) {
-            foreach ($_SESSION["cart_item"] as $k => $v) {
-                if ($_GET["code"] == $k) {
-                    unset($_SESSION["cart_item"][$k]);
-                }
-                if (empty($_SESSION["cart_item"])) {
-                    unset($_SESSION["cart_item"]);
-                }
-            }
-        }
-    } elseif ($_GET['action'] ==  "empty") {
-        unset($_SESSION["cart_item"]);
-        header('LOCATION:cart.php');
-    }
-
-    ?>
     <!-- Cart -->
     <section class="cart bgwhite p-t-70 p-b-100">
         <div class="container">
             <!-- Cart item -->
             <div class="container-table-cart pos-relative">
                 <div class="wrap-table-shopping-cart bgwhite">
+
 
                     <?php
                     if (isset($_SESSION["cart_item"])) {
@@ -355,12 +331,12 @@ $db_handle = new DBController();
                                 <th class="column-3 text-center">Unit Price</th>
                                 <th class="column-4 text-center">Quantity</th>
                                 <th class="column-5 text-center">Total</th>
-                                <th class="column-5"> 
-                                    <a id="btnEmpty" href="cart.php?action=empty"
-                                     class="flex-c-m sizefull bg-danger bo-rad-23 hov1 text-white trans-0-4">
-                                     <small><strong>Empty Cart</strong></small></a>
+                                <th class="column-5">
+                                    <a id="btnEmpty" href="cart.php?action=empty" class="flex-c-m sizefull bg-danger bo-rad-23 hov1 text-white trans-0-4">
+                                        <small><strong>Empty Cart</strong></small></a>
                                 </th>
                             </tr>
+
 
                             <?php
                             foreach ($_SESSION["cart_item"] as $item) {
@@ -452,8 +428,8 @@ $db_handle = new DBController();
                     </span>
 
                     <span class="m-text21 w-size20 w-full-sm">
-                        <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15; 
-                        echo 'R'.number_format($total, 2);
+                        <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
+                        echo 'R' . number_format($total, 2);
                         ?>
                     </span>
                 </div>
@@ -470,17 +446,17 @@ $db_handle = new DBController();
     <?php
                     } else {
     ?>
-        
-	<div class="flex-c-m size22 bg0 s-text21 pos-relative">
-		Your Cart Is Empty!
-		<a href="index.php#Products" class="s-text22 hov6 p-l-5">
-			Shop Now
-		</a>
 
-		<button class="flex-c-m pos2 size23 colorwhite eff3 trans-0-4 btn-romove-top-noti">
-			<i class="fa fa-remove fs-13" aria-hidden="true"></i>
-		</button>
-	</div>
+        <div class="flex-c-m size22 bg0 s-text21 pos-relative">
+            Your Cart Is Empty!
+            <a href="index.php#Products" class="s-text22 hov6 p-l-5">
+                Shop Now
+            </a>
+
+            <button class="flex-c-m pos2 size23 colorwhite eff3 trans-0-4 btn-romove-top-noti">
+                <i class="fa fa-remove fs-13" aria-hidden="true"></i>
+            </button>
+        </div>
     <?php
                     }
     ?>
@@ -694,6 +670,62 @@ $db_handle = new DBController();
     </script>
     <!--===============================================================================================-->
     <script src="js/main.js"></script>
+    <script>
+        function showEditBox(editobj, id) {
+            $('#frmAdd').hide();
+            $(editobj).prop('disabled', 'true');
+            var currentMessage = $("#message_" + id + " .message-content").html();
+            var editMarkUp = '<textarea rows="5" cols="80" id="txtmessage_' + id + '">' + currentMessage + '</textarea><button name="ok" onClick="callCrudAction(\'edit\',' + id + ')">Save</button><button name="cancel" onClick="cancelEdit(\'' + currentMessage + '\',' + id + ')">Cancel</button>';
+            $("#message_" + id + " .message-content").html(editMarkUp);
+        }
+
+        function cancelEdit(message, id) {
+            $("#message_" + id + " .message-content").html(message);
+            $('#frmAdd').show();
+        }
+
+        function cartAction(action, product_code) {
+            var queryString = "";
+            if (action != "") {
+                switch (action) {
+                    case "add":
+                        queryString = 'action=' + action + '&code=' + product_code + '&quantity=' + $("#qty_" + product_code).val();
+                        break;
+                    case "remove":
+                        queryString = 'action=' + action + '&code=' + product_code;
+                        break;
+                    case "empty":
+                        queryString = 'action=' + action;
+                        break;
+                }
+            }
+            jQuery.ajax({
+                url: "cart.php",
+                data: queryString,
+                type: "POST",
+                success: function(data) {
+                    $("#cart-item").html(data);
+                    if (action != "") {
+                        switch (action) {
+                            case "add":
+                                $("#add_" + product_code).hide();
+                                $("#added_" + product_code).show();
+                                break;
+                            case "remove":
+                                $("#add_" + product_code).show();
+                                $("#added_" + product_code).hide();
+                                break;
+                            case "empty":
+                                $(".btnAddAction").show();
+                                $(".btnAdded").hide();
+                                break;
+                        }
+                    }
+                },
+                error: function() {}
+            });
+        }
+    </script>
 
 </body>
 

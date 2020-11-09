@@ -1,5 +1,5 @@
 <?php
-session_start();
+/*session_start();
 require_once("models/dbcontroller.php");
 $db_handle = new DBController();
 
@@ -19,19 +19,32 @@ if (isset($_SESSION["cart_item"])) {
                     </a>
 
                     <span class="header-cart-item-info">
-                        <?php echo $_SESSION['items'] = $total_quantity += $item["quantity"]; ?> x <?php echo "R " . number_format($item_price, 2)." Per Month"; ?>
+                        <?php 
+                        echo $item["quantity"];
+                        //$total_quantity += $item["quantity"]; ?> x <?php echo "R " . number_format($item_price, 2)." Per Month"; ?>
                     </span>
                 </div>
             </li>
         </ul>
         <?php $total_price += ($item["price_per_month"] * $item["quantity"]); ?>
-        <div class="header-cart-total">
-            Total:
+        
             <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
-            echo 'R' . number_format($total, 2);
+              $total =number_format($total, 2);
             ?>
-        </div>
-
+        
+        <?php
+    }
+    echo '<div class="header-cart-total">
+    Total : R'.$total.'</div>';
+} else {
+    echo '    <div class="flex-c-m size22 bg0 s-text21 pos-relative">
+            Your Cart Is Empty!
+            <a href="index.php#Products" class="s-text22 hov6 p-l-5">
+                Shop Now
+            </a>
+        </div>';
+}
+?>
         <div class="header-cart-buttons">
             <div class="header-cart-wrapbtn">
                 <!-- Button -->
@@ -47,14 +60,3 @@ if (isset($_SESSION["cart_item"])) {
                 </a>
             </div>
         </div>
-<?php
-    }
-} else {
-    echo '    <div class="flex-c-m size22 bg0 s-text21 pos-relative">
-            Your Cart Is Empty!
-            <a href="index.php#Products" class="s-text22 hov6 p-l-5">
-                Shop Now
-            </a>
-        </div>';
-}
-?>

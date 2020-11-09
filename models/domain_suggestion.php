@@ -1,5 +1,9 @@
-
 <?php
+session_start();
+require_once("dbcontroller.php");
+$db_handle = new DBController();
+
+
 
 if ($_POST['domain'] == '') {
     echo "<strong class='text-warning'>Please Enter A Domain Name To Proceed!";
@@ -10,35 +14,43 @@ if (isset($_POST['domain'])) {
     $name = $_POST['name'];
 
 
-    $names = array(
-        '90.00' => '.co.za', '230.00' => '.com', '290.00' => '.org', '350.00' => '.info', '440.00' => '.mobi', '286.00' => '.net', '360.00' => '.biz', '180.00' => '.de', '160.00' => '.icu', '600.00' => '.me', '210.00' => '.top',
-        '385.00' => '.club', '200.00' => '.cn', '195.00' => '.uk', '605.00' => '.site', '585.00' => '.blog', '305.00' => '.vip',
-        '210.00' => '.nl', '260.00' => '.xyz', '190.00' => '.co.uk', '235.00' => '.online'
-    );
+    $names = $db_handle->runQuery("SELECT * FROM `domain_names` ORDER BY code ASC");
+
+
 
     foreach ($names as $key => $value) {
-        if ($value != $name) {
-            $choosen_domain = $domain . $value;
+        if ($names[$key]['dot_name'] != $name) {
+            
+          $suggested_domain = $domain . $names[$key]['dot_name'];
+          
 
+            if (gethostbyname($suggested_domain) == $suggested_domain) {
 
-            if (gethostbyname($choosen_domain) == $choosen_domain) {
-
-                $price = $key;
+                $price = $names[$key]['price'];
                 $billing_cycle = "Annually";
                 if (gethostbyname($domain) == $domain) {
-                    echo "
-                <tr>
-                <td><strong><p class='text-white'>" . $choosen_domain . "</p></strong></td> <td><strong><p class='text text-white'>R" . $price . "</p></strong></td>
-                <td><strong ><p class='text-white'>" . $billing_cycle . "</p></strong></td>
-                <td><button  class='flex-c-m size4 bg-info bo-rad-23 hov1 s-text1 trans-0-4'>
-                Add To Cart
-            </button></td>
-                <tr>";
+                    ?>
+
+                    <form id='add_domain_cart_form' name='add_domain_cart_form' >
+                            
+                    <tr>
+                <td><strong><p class='text-white'> <?php echo $suggested_domain;  ?></p></strong></td>
+                <td><strong><p class='text text-white'>R<?php echo $price;  ?></p></strong></td>
+                <td><strong ><p class='text-white'><?php echo $billing_cycle; ?></p></strong></td>
+                
+            <input type='hidden' name='quantity' value='1' />
+            <input type='hidden' name='action' value='add_domain'  />
+            <input type='hidden' name='code' value=<?php echo $names[$key]['code']; ?> size='2' />
+            
+            <td><button class='flex-c-m size4 bg-info bo-rad-23 hov1 s-text1 trans-0-4'>
+            Add To Cart
+        </button></td>
+        </form>
+        <tr>
+        
+        <?php
                 }
             }
         }
     }
 }
-?>
-
-

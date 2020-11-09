@@ -240,7 +240,7 @@ $db_handle = new DBController();
                     <li class="item-topbar-mobile p-l-10">
                         <div class="topbar-social-mobile">
                             <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                            
+
                             <a href="#" class="topbar-social-item fa fa-instagram"></a>
                             <a href="https://api.whatsapp.com/send?phone=+27659056171&text=Hi%20There!, Please send us your message, we will reply to you back as soon as possible" class="topbar-social-item fa fa-whatsapp"></a>
                             <a href="#" class="topbar-social-item fa fa-linkedin"></a>
@@ -890,7 +890,7 @@ $db_handle = new DBController();
                         <p class="flex-c-m size22 bg-dark s-text21 pos-relative mt-4" id="suggested1">
                             <strong class="text text-warning text-lg">Suggested Domain Names </strong>
                         </p>
-                        <br/>
+                        <br />
                         <table class="table table-striped bg-secondary" id="suggested2">
                             <thead class="bg-dark">
                                 <tr>
@@ -904,7 +904,7 @@ $db_handle = new DBController();
                                         <p class="text text-white"> Billing Cycle </p>
                                     </th>
                                     <th scope="col">
-         
+
                                     </th>
                                 </tr>
                             </thead>
@@ -919,7 +919,7 @@ $db_handle = new DBController();
                         <div class="row" id="hosting_packages">
 
                             <?php
-                            include 'models/hosting_packages.php';
+                            include 'hosting_packages.php';
                             ?>
 
                         </div>
@@ -1185,7 +1185,7 @@ $db_handle = new DBController();
             <div class="wrap-video-mo-01">
                 <div class="w-full wrap-pic-w op-0-0"><img src="images/icons/video-16-9.jpg" alt="IMG"></div>
                 <div class="video-mo-01">
-                    <iframe src="https://www.youtube.com/embed/Nt8ZrWY2Cmk?rel=0&amp;showinfo=0" allowfullscreen></iframe>
+                    <iframe src="" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -1225,7 +1225,7 @@ $db_handle = new DBController();
             suggestedDomain();
             emailMessage();
             hostingPackages();
-            addToCart();
+
         });
 
         function checkDomain() {
@@ -1324,57 +1324,83 @@ $db_handle = new DBController();
     <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-    <script type="text/javascript">
-        $('.block2-btn-addcart').each(function() {
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function() {
 
-                //submit form
-                $('#add_to_cart_form').submit(function() {
+    <script>
+        function showEditBox(editobj, id) {
+            $('#frmAdd').hide();
+            $(editobj).prop('disabled', 'true');
+            var currentMessage = $("#message_" + id + " .message-content").html();
+            var editMarkUp = '<textarea rows="5" cols="80" id="txtmessage_' + id + '">' + currentMessage + '</textarea><button name="ok" onClick="callCrudAction(\'edit\',' + id + ')">Save</button><button name="cancel" onClick="cancelEdit(\'' + currentMessage + '\',' + id + ')">Cancel</button>';
+            $("#message_" + id + " .message-content").html(editMarkUp);
+        
+        
+        }
 
-                    var form_values = $('#add_to_cart_form').serialize();
+        function cancelEdit(message, id) {
+            $("#message_" + id + " .message-content").html(message);
+            $('#frmAdd').show();
+        }
 
-                    $.ajax({
-                        type: 'POST',
-                        url: 'cart.php',
-                        data: form_values,
-                        success: function(data) {
-                            swal(nameProduct, "is added to cart !", "success");
-                            setInterval(function() {
-                                $("#items").load('items.php')
-                            }, 1000);
-                            setInterval(function() {
-                                $("#items2").load('items.php')
-                            }, 1000);
-                            setInterval(function() {
-                                $("#items3").load('items.php')
-                            }, 1000);
+        function cartAction(action, product_code) {
+            var queryString = "";
+            if (action != "") {
+                switch (action) {
+                    case "add":
+                        queryString = 'action=' + action + '&code=' + product_code + '&quantity=' + $("#qty_" + product_code).val();
+                        break;
+                    case "remove":
+                        queryString = 'action=' + action + '&code=' + product_code;
+                        break;
+                    case "empty":
+                        queryString = 'action=' + action;
+                        break;
+                }
+            }
+            jQuery.ajax({
+                url: "cart_action.php",
+                data: queryString,
+                type: "POST",
+                success: function(data) {
 
-                            setInterval(function() {
-                                $("#cart-content").load('cart-content.php')
-                            }, 1000);
-                            setInterval(function() {
-                                $("#cart-content2").load('cart-content.php')
-                            }, 1000);
-                            setInterval(function() {
-                                $("#cart-content3").load('cart-content.php')
-                            }, 1000);
+
+                    if (action != "") {
+                        switch (action) {
+                            case "add":
+                               // $("#add_" + product_code).hide();
+                               // $("#added_" + product_code).show();
+
+                                break;
+                            case "remove":
+                               /// $("#add_" + product_code).show();
+                                //$("#added_" + product_code).hide();
+                                break;
+                            case "empty":
+                                //$(".btnAddAction").show();
+                                //$(".btnAdded").hide();
+                                break;
                         }
-                    });
-
-                    return false;
-                });
+                    }
+                },
+                error: function() {}
             });
-        });
-
-        $('.block2-btn-addwishlist').each(function() {
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to wishlist !", "success");
-            });
-        });
+        }
     </script>
 
+<script type="text/javascript">
+		$('.block2-btn-addcart').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to cart !", "success");
+			});
+		});
+
+		$('.block2-btn-addwishlist').each(function(){
+			var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+			$(this).on('click', function(){
+				swal(nameProduct, "is added to wishlist !", "success");
+			});
+		});
+	</script>
     <!--===============================================================================================-->
     <script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>
     <script type="text/javascript">

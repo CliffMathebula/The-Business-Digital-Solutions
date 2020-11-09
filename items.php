@@ -8,8 +8,9 @@ if (isset($_SESSION["cart_item"])) {
     $total_price = 0;
 
     foreach ($_SESSION["cart_item"] as $item) {
-        echo   $total_quantity += $item["quantity"];
+      $total_quantity += $item["quantity"];
     }
+    echo $total_quantity;
 } else {
     echo 0;
 }
