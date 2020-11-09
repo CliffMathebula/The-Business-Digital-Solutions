@@ -1357,7 +1357,7 @@ $db_handle = new DBController();
                 }
             }
             jQuery.ajax({
-                url: "cart_action.php",
+                url: "models/cart_action.php",
                 data: queryString,
                 type: "POST",
                 success: function(data) {

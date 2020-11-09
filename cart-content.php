@@ -1,5 +1,5 @@
 <?php
-/*session_start();
+session_start();
 require_once("models/dbcontroller.php");
 $db_handle = new DBController();
 
@@ -19,23 +19,23 @@ if (isset($_SESSION["cart_item"])) {
                     </a>
 
                     <span class="header-cart-item-info">
-                        <?php 
+                        <?php
                         echo $item["quantity"];
-                        //$total_quantity += $item["quantity"]; ?> x <?php echo "R " . number_format($item_price, 2)." Per Month"; ?>
+                        $total_quantity += $item["quantity"]; ?> x <?php echo "R " . number_format($item_price, 2) . " Per Month"; ?>
                     </span>
                 </div>
             </li>
         </ul>
         <?php $total_price += ($item["price_per_month"] * $item["quantity"]); ?>
-        
-            <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
-              $total =number_format($total, 2);
-            ?>
-        
-        <?php
+
+        <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
+        $total = number_format($total, 2);
+        ?>
+
+<?php
     }
     echo '<div class="header-cart-total">
-    Total : R'.$total.'</div>';
+    Total : R' . $total . '</div>';
 } else {
     echo '    <div class="flex-c-m size22 bg0 s-text21 pos-relative">
             Your Cart Is Empty!
@@ -45,18 +45,18 @@ if (isset($_SESSION["cart_item"])) {
         </div>';
 }
 ?>
-        <div class="header-cart-buttons">
-            <div class="header-cart-wrapbtn">
-                <!-- Button -->
-                <a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                    View Cart
-                </a>
-            </div>
+<div class="header-cart-buttons">
+    <div class="header-cart-wrapbtn">
+        <!-- Button -->
+        <a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+            View Cart
+        </a>
+    </div>
 
-            <div class="header-cart-wrapbtn">
-                <!-- Button -->
-                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                    Check Out
-                </a>
-            </div>
-        </div>
+    <div class="header-cart-wrapbtn">
+        <!-- Button -->
+        <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+            Check Out
+        </a>
+    </div>
+</div>

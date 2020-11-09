@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-echo $_REQUEST["action"];
-
-echo $_REQUEST["code"];
-
 if (!empty($_REQUEST["action"])) {
     switch ($_REQUEST["action"]) {
 
@@ -13,19 +9,21 @@ if (!empty($_REQUEST["action"])) {
                 foreach ($_SESSION["cart_item"] as $k => $v) {
                     if ($_REQUEST["code"] == $k)
                         unset($_SESSION["cart_item"][$k]);
+                    header('Location:cart.php');
+
                     if (empty($_SESSION["cart_item"]))
                         unset($_SESSION["cart_item"]);
+                    header('Location:cart.php');
                 }
             }
             break;
         case "empty":
             unset($_SESSION["cart_item"]);
+            header('Location:cart.php');
             break;
     }
 }
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,10 +32,6 @@ if (!empty($_REQUEST["action"])) {
     <title>The Business Digital Solutions</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="images/icons/favicon.png" />
     <!--===============================================================================================-->
@@ -68,63 +62,69 @@ if (!empty($_REQUEST["action"])) {
     <link rel="stylesheet" type="text/css" href="css/util.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!--===============================================================================================-->
+    <script type="text/javascript" src="jquery.min.js"></script>
 </head>
 
 <body class="animsition">
-
     <!-- header fixed -->
     <div class="wrap_header fixed-header2 trans-0-4">
         <!-- Logo -->
         <a href="index.php">
-            <img src="images/icons/tbds.png" width="200" height="90" alt="IMG-LOGO">
+            <img src="images/icons/tbds.jpeg" width="200" height="65" alt="IMG-LOGO">
         </a>
 
         <!-- Menu -->
         <div class="wrap_menu">
             <nav class="menu">
                 <ul class="main_menu">
-
                     <li>
-                        <a href="index.php#Products"><small><strong> Products & Services </strong></small></a>
+                        <a href="#Products">Products & Services</a>
                     </li>
 
                     <li>
-                        <a href="#domains"><small><strong>Domains</strong></small></a>
+                        <a href="#book-us">Book-Us</a>
+                    </li>
+                    <li>
+                        <a href="blog.html">FAQs</a>
                     </li>
 
                     <li>
-                        <a href="#hosting"><small><strong>Hosting</strong></small></a>
+                        <a href="#contact">Contact</a>
                     </li>
 
                     <li>
-                        <a href="#web-development"><small><strong>Web Development</strong></small></a>
-                    </li>
-
-                    <li>
-                        <a href="#app-development"><small><strong>App Development</strong></small></a>
-                    </li>
-
-                    <li>
-                        <a href="about.html"><small><strong>About</strong></small></a>
-                    </li>
-
-                    <li>
-                        <a href="contact.html"><small><strong>Contact</strong></small></a>
+                        <a href="about.html">About</a>
                     </li>
                 </ul>
             </nav>
         </div>
+        <div class="topbar-child2">
 
+            <!--  -->
+            <a href="#" class="header-wrapicon1 dis-block m-l-30">
+                <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
+            </a>
+
+            <span class="linedivide1"></span>
+
+            <div class="header-wrapicon2 m-r-13">
+                <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                <span class="header-icons-noti" id="items">
+
+                </span>
+
+                <!-- Header cart noti -->
+                <div class="header-cart header-dropdown" id="cart-content">
+
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- top noti -->
     <div class="flex-c-m size22 bg-info s-text21 pos-relative">
-        <strong> We Deliver Cost Effective & High Quality Software! </strong>
-
-
-        <button class="flex-c-m pos2 size23 colorwhite eff3 trans-0-4 btn-romove-top-noti">
-            <i class="fa fa-remove fs-13" aria-hidden="true"></i>
-        </button>
+        <p class="text text-white text-center"> <strong> We Deliver Cost Effective & High Quality Software! </strong></p>
     </div>
 
     <!-- Header -->
@@ -134,34 +134,35 @@ if (!empty($_REQUEST["action"])) {
             <div class="topbar2">
                 <div class="topbar-social">
                     <a href="#" class="topbar-social-item fa fa-facebook"></a>
+                    <a href="#" class="topbar-social-item fa fa-instagram"></a>
                     <a href="https://api.whatsapp.com/send?phone=+27659056171&text=Hi%20There!, Please send us your message, we will reply to you back as soon as possible" class="topbar-social-item fa fa-whatsapp"></a>
+                    <a href="#" class="topbar-social-item fa fa-linkedin"></a>
 
-                    <!--	<a href="#" class="topbar-social-item fa fa-instagram"></a>
-					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+                    <!--<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
 					<a href="#" class="topbar-social-item fa fa-youtube-play"></a> -->
                 </div>
 
                 <!-- Logo2 -->
-                <a href="index.html">
-                    <img src="images/icons/tbds.jpeg" width="200" height="100" alt="IMG-LOGO">
+                <a href="index.php">
+                    <img src="images/icons/tbds.jpeg" width="250" height="100" alt="IMG-LOGO">
                 </a>
 
                 <div class="topbar-child2">
-
                     <!--  -->
                     <a href="#" class="header-wrapicon1 dis-block m-l-30">
-                        Login
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M11.5 8h-7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1zm-7-1a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7zm0-3a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z" />
-                        </svg>
+                        <img src="images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
                     </a>
                     <span class="linedivide1"></span>
-                    <a href="#" class="header-wrapicon1 dis-block">
-                        Sign-Up&nbsp;
-                        <span class="glyphicon glyphicon-user"></span>
-                    </a>
+                    <div class="header-wrapicon2 m-r-13">
+                        <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <span class="header-icons-noti" id="items2">
+                        </span>
 
+                        <!-- Header cart noti -->
+                        <div class="header-cart header-dropdown" id="cart-content2">
+
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -172,25 +173,20 @@ if (!empty($_REQUEST["action"])) {
                 <div class="wrap_menu">
                     <nav class="menu">
                         <ul class="main_menu">
+
                             <li>
-                                <a href="index.php#Products">Products & Services</a>
+                                <a href="#Products">Products & Services</a>
                             </li>
 
                             <li>
-                                <a href="index.php#domains">Domains</a>
+                                <a href="#book-us">Book Us</a>
                             </li>
 
-                            <li>
-                                <a href="#hosting">Hosting</a>
-                            </li>
 
                             <li>
-                                <a href="#web-development">Web Development</a>
+                                <a href="blog.html">FAQs</a>
                             </li>
 
-                            <li>
-                                <a href="#app-development">App Development</a>
-                            </li>
                             <li>
                                 <a href="#contact">Contact</a>
                             </li>
@@ -210,39 +206,43 @@ if (!empty($_REQUEST["action"])) {
             </div>
         </div>
 
+
         <!-- Header Mobile -->
         <div class="wrap_header_mobile">
             <!-- Logo moblie -->
-            <a href="index.php">
-                <img src="images/icons/tbds.png" width="200" height="100" alt="IMG-LOGO">
+            <a href="index.php" class="logo-mobile">
+                <img src="images/icons/tbds.jpeg" alt="IMG-LOGO">
             </a>
 
             <!-- Button show menu -->
             <div class="btn-show-menu">
                 <!-- Header Icon mobile -->
                 <div class="header-icons-mobile">
-
-                    <!--  -->
-                    <a href="#" class="header-wrapicon1 dis-block m-l-30">
-                        Login
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-lock" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M11.5 8h-7a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V9a1 1 0 0 0-1-1zm-7-1a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7zm0-3a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z" />
-                        </svg>
-                    </a>
-                    <span class="linedivide1"></span>
-                    <a href="#" class="header-wrapicon1 dis-block">
-                        Sign-Up&nbsp;
-                        <span class="glyphicon glyphicon-user"></span>
+                    <a href="#">
+                        <img src="images/icons/icon-header-01.png" width="100%">
                     </a>
 
-                </div>
+                    <span class="linedivide2"></span>
 
-                <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
+                    <div class="header-wrapicon2">
+                        <img src="images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <span class="header-icons-noti js-show-header-dropdown" id="items3">
+
+                        </span>
+                        <!-- Header cart noti -->
+                        <div class="header-cart header-dropdown" id="cart-content3">
+
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
         </div>
 
         <!-- Menu Mobile -->
@@ -250,28 +250,28 @@ if (!empty($_REQUEST["action"])) {
             <nav class="side-menu">
                 <ul class="main-menu">
 
-                    <!--	<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-						<div class="topbar-child2-mobile">
-							<span class="topbar-email">
-								<a href = "mailto: info@thebusinessdigitalsolutions.co.za">info@thebusinessdigitalsolutions.co.za</a>
-							</span>
-						</div>
-					</li> -->
+                    <li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
+                        <div class="topbar-child2-mobile">
+                            <span class="topbar-email">
+                                <small> info@thebusinessdigitalsolutions.co.za</small>
+                            </span>
+
+                        </div>
+                    </li>
 
                     <li class="item-topbar-mobile p-l-10">
                         <div class="topbar-social-mobile">
                             <a href="#" class="topbar-social-item fa fa-facebook"></a>
-                            <a href="https://api.whatsapp.com/send?phone=+27659056171&text=Hi%20There!, Please send us your message, we will reply to you back as soon as possible" class="topbar-social-item fa fa-whatsapp"></a>
-                            <!--	<a href="#" class="topbar-social-item fa fa-instagram"></a>
-							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-							<a href="#" class="topbar-social-item fa fa-youtube-play"></a> -->
-                        </div>
-                    </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="index.html">Home</a>
-                        <i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
+                            <a href="#" class="topbar-social-item fa fa-instagram"></a>
+                            <a href="https://api.whatsapp.com/send?phone=+27659056171&text=Hi%20There!, Please send us your message, we will reply to you back as soon as possible" class="topbar-social-item fa fa-whatsapp"></a>
+                            <a href="#" class="topbar-social-item fa fa-linkedin"></a>
+
+                            <!--
+					<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
+					<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
+					<a href="#" class="topbar-social-item fa fa-youtube-play"></a> -->
+                        </div>
                     </li>
 
                     <li class="item-menu-mobile">
@@ -279,19 +279,12 @@ if (!empty($_REQUEST["action"])) {
                     </li>
 
                     <li class="item-menu-mobile">
-                        <a href="product.html">Domains</a>
+                        <a href="#book-us">Book-US</a>
                     </li>
 
-                    <li class="item-menu-mobile">
-                        <a href="cart.html">Hosting</a>
-                    </li>
 
                     <li class="item-menu-mobile">
-                        <a href="blog.html">Web Development</a>
-                    </li>
-
-                    <li class="item-menu-mobile">
-                        <a href="#app-development">App Development</a>
+                        <a href="blog.html">FAQs</a>
                     </li>
 
                     <li class="item-menu-mobile">
@@ -299,7 +292,7 @@ if (!empty($_REQUEST["action"])) {
                     </li>
 
                     <li class="item-menu-mobile">
-                        <a href="contact.html">Contact</a>
+                        <a href="#contact">Contact</a>
                     </li>
                 </ul>
             </nav>
@@ -310,6 +303,14 @@ if (!empty($_REQUEST["action"])) {
     <!-- Cart -->
     <section class="cart bgwhite p-t-70 p-b-100">
         <div class="container">
+
+            <div class="sec-title p-b-22">
+                <h2 class="m-text5 t-center">
+                    products Added on Cart
+                </h2>
+                <br />
+            </div>
+
             <!-- Cart item -->
             <div class="container-table-cart pos-relative">
                 <div class="wrap-table-shopping-cart bgwhite">
@@ -360,7 +361,7 @@ if (!empty($_REQUEST["action"])) {
 
                                     <td column="column-6">
                                         <div class="w-size17">
-                                            <a href="cart.php?action=remove&code=<?php echo $item["code"]; ?>"><img src="icon-delete.png" alt="Remove Item" /></a>
+                                            <a href="cart.php?action=remove&code=<?php echo $item["code"]; ?>"><img src="models/icon-delete.png" alt="Remove Item" /></a>
                                         </div>
                                     </td>
 
@@ -436,9 +437,9 @@ if (!empty($_REQUEST["action"])) {
 
                 <div class="size15 trans-0-4">
                     <!-- Button -->
-                    <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                    <a href="checkout.php" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                         Proceed to Checkout
-                    </button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -648,6 +649,115 @@ if (!empty($_REQUEST["action"])) {
 
 
 
+    <script>
+        //page onload
+        $(document).ready(function() {
+            setInterval(function() {
+                $("#items").load('items.php')
+            }, 1000);
+            setInterval(function() {
+                $("#items2").load('items.php')
+            }, 1000);
+            setInterval(function() {
+                $("#items3").load('items.php')
+            }, 1000);
+
+            setInterval(function() {
+                $("#cart-content").load('cart-content.php')
+            }, 1000);
+            setInterval(function() {
+                $("#cart-content2").load('cart-content.php')
+            }, 1000);
+            setInterval(function() {
+                $("#cart-content3").load('cart-content.php')
+            }, 1000);
+
+            $('#domain_form').show();
+            $('#domain_status').hide();
+            $('#email_message').hide();
+            $('#suggested').hide();
+            $('#suggested1').hide();
+            $('#suggested2').hide();
+
+            checkDomain();
+            suggestedDomain();
+            emailMessage();
+            hostingPackages();
+
+        });
+
+        function checkDomain() {
+
+            //submit form
+            $('#domain_form').submit(function() {
+
+                var form_values = $('#domain_form').serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'models/check_domain.php',
+                    data: form_values,
+                    success: function(data) {
+
+                        //alert(data);
+                        $('#domain_status').html(data);
+                    }
+                });
+                $('#domain_status').show();
+                return false;
+            });
+        }
+
+        function suggestedDomain() {
+
+            //submit form
+            $('#domain_form').submit(function() {
+
+                var form_values = $('#domain_form').serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'models/domain_suggestion.php',
+                    data: form_values,
+                    success: function(data) {
+
+                        //alert(data);
+                        $('#suggested').html(data);
+                    }
+                });
+                $('#suggested').show();
+                $('#suggested1').show();
+                $('#suggested2').show();
+                return false;
+            });
+
+        }
+
+        function emailMessage() {
+
+            //submit form
+            $('#email_form').submit(function() {
+
+                var form_values = $('#email_form').serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'includes/contact-form.php',
+                    data: form_values,
+                    success: function(data) {
+
+                        //alert(data);
+                        $('#email_message').html(data);
+                    }
+                });
+                $('#email_message').show();
+                return false;
+            });
+        }
+    </script>
+
+
+
     <!--===============================================================================================-->
     <script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
     <!--===============================================================================================-->
@@ -662,14 +772,17 @@ if (!empty($_REQUEST["action"])) {
             minimumResultsForSearch: 20,
             dropdownParent: $('#dropDownSelect1')
         });
-
-        $(".selection-2").select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $('#dropDownSelect2')
-        });
     </script>
     <!--===============================================================================================-->
-    <script src="js/main.js"></script>
+    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
+    <script type="text/javascript" src="js/slick-custom.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
+
     <script>
         function showEditBox(editobj, id) {
             $('#frmAdd').hide();
@@ -677,6 +790,8 @@ if (!empty($_REQUEST["action"])) {
             var currentMessage = $("#message_" + id + " .message-content").html();
             var editMarkUp = '<textarea rows="5" cols="80" id="txtmessage_' + id + '">' + currentMessage + '</textarea><button name="ok" onClick="callCrudAction(\'edit\',' + id + ')">Save</button><button name="cancel" onClick="cancelEdit(\'' + currentMessage + '\',' + id + ')">Cancel</button>';
             $("#message_" + id + " .message-content").html(editMarkUp);
+
+
         }
 
         function cancelEdit(message, id) {
@@ -700,24 +815,26 @@ if (!empty($_REQUEST["action"])) {
                 }
             }
             jQuery.ajax({
-                url: "cart.php",
+                url: "models/cart_action.php",
                 data: queryString,
                 type: "POST",
                 success: function(data) {
-                    $("#cart-item").html(data);
+
+
                     if (action != "") {
                         switch (action) {
                             case "add":
-                                $("#add_" + product_code).hide();
-                                $("#added_" + product_code).show();
+                                // $("#add_" + product_code).hide();
+                                // $("#added_" + product_code).show();
+
                                 break;
                             case "remove":
-                                $("#add_" + product_code).show();
-                                $("#added_" + product_code).hide();
+                                /// $("#add_" + product_code).show();
+                                //$("#added_" + product_code).hide();
                                 break;
                             case "empty":
-                                $(".btnAddAction").show();
-                                $(".btnAdded").hide();
+                                //$(".btnAddAction").show();
+                                //$(".btnAdded").hide();
                                 break;
                         }
                     }
@@ -726,6 +843,29 @@ if (!empty($_REQUEST["action"])) {
             });
         }
     </script>
+
+    <script type="text/javascript">
+        $('.block2-btn-addcart').each(function() {
+            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+            $(this).on('click', function() {
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+
+        $('.block2-btn-addwishlist').each(function() {
+            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+            $(this).on('click', function() {
+                swal(nameProduct, "is added to wishlist !", "success");
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>
+    <script type="text/javascript">
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
 
 </body>
 

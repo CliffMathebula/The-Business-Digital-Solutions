@@ -8,7 +8,7 @@ switch($_POST["action"]) {
 	case "add":
 		if(!empty($_POST["quantity"])) {
 			$productByCode = $db_handle->runQuery("SELECT * FROM hosting_packages WHERE code='" . $_POST["code"] . "'");
-			$itemArray = array($productByCode[0]["code"]=>array('name'=>$productByCode[0]["name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price'=>$productByCode[0]["price"]));
+			$itemArray = array($productByCode[0]["code"]=>array('product_name'=>$productByCode[0]["product_name"], 'code'=>$productByCode[0]["code"], 'quantity'=>$_POST["quantity"], 'price_per_month'=>$productByCode[0]["price_per_month"]));
 			
 			if(!empty($_SESSION["cart_item"])) {
 				if(in_array($productByCode[0]["code"],$_SESSION["cart_item"])) {
