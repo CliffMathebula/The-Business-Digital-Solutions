@@ -284,7 +284,7 @@ $db_handle = new DBController();
                 <div class="item-slick1 item1-slick1" style="background-image: url(images/item-02.jpeg.jpeg);">
                     <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22 text-warning" data-appear="fadeInUp">
-                            Website Development
+                           <strong> Website Development </strong>
                         </h2>
 
                         <span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33 text-warning" data-appear="fadeInDown">
@@ -303,7 +303,7 @@ $db_handle = new DBController();
                 <div class="item-slick1 item2-slick1" style="background-image: url(images/mobile.jpg);">
                     <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22 text-warning" data-appear="rollIn">
-                            Mobile App Development
+                           <strong> Mobile App Development </strong>
                         </h2>
 
                         <span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33 text-warning" data-appear="lightSpeedIn">
@@ -322,7 +322,7 @@ $db_handle = new DBController();
                 <div class="item-slick1 item3-slick1" style="background-image: url(images/domain.jpg);">
                     <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22 text-warning" data-appear="rotateInDownLeft">
-                            Domain Names
+                            <strong> Domain Names </strong>
                         </h2>
 
                         <span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33 text-warning" data-appear="rotateInUpRight">
@@ -341,7 +341,7 @@ $db_handle = new DBController();
                 <div class="item-slick1 item3-slick1" style="background-image: url(images/slide2.jpg);">
                     <div class="wrap-content-slide1 sizefull flex-col-c-m p-l-15 p-r-15 p-t-150 p-b-170">
                         <h2 class="caption1-slide1 xl-text2 t-center bo14 p-b-6 animated visible-false m-b-22 text-warning" data-appear="rotateInDownLeft">
-                            Hosting Services
+                           <strong> Hosting Services </strong>
                         </h2>
 
                         <span class="caption2-slide1 m-text1 t-center animated visible-false m-b-33 text-warning" data-appear="rotateInUpRight">
