@@ -304,9 +304,9 @@ if (!empty($_REQUEST["action"])) {
     <section class="cart bgwhite p-t-70 p-b-100">
         <div class="container">
 
-            <div class="sec-title p-b-22">
+            <div class="sec-title">
                 <h2 class="m-text5 t-center">
-                    products Added on Cart
+                    <small>Cart Items</small>
                 </h2>
                 <br />
             </div>
@@ -332,9 +332,9 @@ if (!empty($_REQUEST["action"])) {
                                 <th class="column-3 text-center">Unit Price</th>
                                 <th class="column-4 text-center">Quantity</th>
                                 <th class="column-5 text-center">Total</th>
-                                <th class="column-5">
-                                    <a id="btnEmpty" href="cart.php?action=empty" class="flex-c-m sizefull bg-danger bo-rad-23 hov1 text-white trans-0-4">
-                                        <small><strong>Empty Cart</strong></small></a>
+                                <th class="column-6">
+                                    <a id="btnEmpty" href="cart.php?action=empty" class="flex-c-m sizefull bo-rad-23 hov1 text-white trans-0-4 btn btn-primary">
+                                        <small>Empty Cart</small></a>
                                 </th>
                             </tr>
 
@@ -398,9 +398,9 @@ if (!empty($_REQUEST["action"])) {
                     Cart Totals
                 </h5>
 
-                <!--  -->
+                <!-- Sub Totals -->
                 <div class="flex-w flex-sb-m p-b-12">
-                    <span class="s-text18 w-size19 w-full-sm">
+                    <span class="m-text19 w-size19 w-full-sm">
                         Subtotal:
                     </span>
 
@@ -409,9 +409,9 @@ if (!empty($_REQUEST["action"])) {
                     </span>
                 </div>
 
-                <!--  -->
+                <!-- quatity -->
                 <div class="flex-w flex-sb bo10 p-t-15 p-b-20">
-                    <span class="s-text18 w-size19 w-full-sm">
+                    <span class="m-text19 w-size19 w-full-sm">
                         Quantity:
                     </span>
 
@@ -422,22 +422,23 @@ if (!empty($_REQUEST["action"])) {
                     </div>
                 </div>
 
-                <!--  -->
+                <!-- Totals including vat -->
                 <div class="flex-w flex-sb-m p-t-26 p-b-30">
-                    <span class="m-text22 w-size19 w-full-sm">
-                        Total:
+                    <span class="m-text19 w-size20 w-full-sm">
+                        Total Inc VAT @ 0.15%
                     </span>
 
-                    <span class="m-text21 w-size20 w-full-sm">
+                    <span class="m-text21 w-size20  text-dark">
                         <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
                         echo 'R' . number_format($total, 2);
                         ?>
                     </span>
                 </div>
 
+
                 <div class="size15 trans-0-4">
                     <!-- Button -->
-                    <a href="checkout.php" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+                    <a href="login/checkout.php" class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                         Proceed to Checkout
                     </a>
                 </div>
@@ -463,410 +464,6 @@ if (!empty($_REQUEST["action"])) {
     ?>
     </section>
 
-
-
-
-    <!-- Footer -->
-    <footer class="bg6 p-t-45 p-b-43 p-l-45 p-r-45">
-        <div class="flex-w p-b-90">
-            <div class="w-size6 p-t-30 p-l-15 p-r-15 respon3">
-                <h4 class="s-text12 p-b-30">
-                    GET IN TOUCH
-                </h4>
-
-                <div>
-                    <p class="s-text7 w-size27">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on (+1) 96 716 6879
-                    </p>
-
-                    <div class="flex-m p-t-30">
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-facebook"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-instagram"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-pinterest-p"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-snapchat-ghost"></a>
-                        <a href="#" class="fs-18 color1 p-r-20 fa fa-youtube-play"></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-                <h4 class="s-text12 p-b-30">
-                    Categories
-                </h4>
-
-                <ul>
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Men
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Women
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Dresses
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Sunglasses
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-                <h4 class="s-text12 p-b-30">
-                    Links
-                </h4>
-
-                <ul>
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Search
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            About Us
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Contact Us
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Returns
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="w-size7 p-t-30 p-l-15 p-r-15 respon4">
-                <h4 class="s-text12 p-b-30">
-                    Help
-                </h4>
-
-                <ul>
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Track Order
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Returns
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            Shipping
-                        </a>
-                    </li>
-
-                    <li class="p-b-9">
-                        <a href="#" class="s-text7">
-                            FAQs
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="w-size8 p-t-30 p-l-15 p-r-15 respon3">
-                <h4 class="s-text12 p-b-30">
-                    Newsletter
-                </h4>
-
-                <form>
-                    <div class="effect1 w-size9">
-                        <input class="s-text7 bg6 w-full p-b-5" type="text" name="email" placeholder="email@example.com">
-                        <span class="effect1-line"></span>
-                    </div>
-
-                    <div class="w-size2 p-t-20">
-                        <!-- Button -->
-                        <button class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
-                            Subscribe
-                        </button>
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-        <div class="t-center p-l-15 p-r-15">
-            <a href="#">
-                <img class="h-size2" src="images/icons/paypal.png" alt="IMG-PAYPAL">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/visa.png" alt="IMG-VISA">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/mastercard.png" alt="IMG-MASTERCARD">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/express.png" alt="IMG-EXPRESS">
-            </a>
-
-            <a href="#">
-                <img class="h-size2" src="images/icons/discover.png" alt="IMG-DISCOVER">
-            </a>
-
-            <div class="t-center s-text8 p-t-20">
-                Copyright © 2018 All rights reserved. | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-            </div>
-        </div>
-    </footer>
-
-
-
-    <!-- Back to top -->
-    <div class="btn-back-to-top bg0-hov" id="myBtn">
-        <span class="symbol-btn-back-to-top">
-            <i class="fa fa-angle-double-up" aria-hidden="true"></i>
-        </span>
-    </div>
-
-    <!-- Container Selection -->
-    <div id="dropDownSelect1"></div>
-    <div id="dropDownSelect2"></div>
-
-
-
-    <script>
-        //page onload
-        $(document).ready(function() {
-            setInterval(function() {
-                $("#items").load('items.php')
-            }, 1000);
-            setInterval(function() {
-                $("#items2").load('items.php')
-            }, 1000);
-            setInterval(function() {
-                $("#items3").load('items.php')
-            }, 1000);
-
-            setInterval(function() {
-                $("#cart-content").load('cart-content.php')
-            }, 1000);
-            setInterval(function() {
-                $("#cart-content2").load('cart-content.php')
-            }, 1000);
-            setInterval(function() {
-                $("#cart-content3").load('cart-content.php')
-            }, 1000);
-
-            $('#domain_form').show();
-            $('#domain_status').hide();
-            $('#email_message').hide();
-            $('#suggested').hide();
-            $('#suggested1').hide();
-            $('#suggested2').hide();
-
-            checkDomain();
-            suggestedDomain();
-            emailMessage();
-            hostingPackages();
-
-        });
-
-        function checkDomain() {
-
-            //submit form
-            $('#domain_form').submit(function() {
-
-                var form_values = $('#domain_form').serialize();
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'models/check_domain.php',
-                    data: form_values,
-                    success: function(data) {
-
-                        //alert(data);
-                        $('#domain_status').html(data);
-                    }
-                });
-                $('#domain_status').show();
-                return false;
-            });
-        }
-
-        function suggestedDomain() {
-
-            //submit form
-            $('#domain_form').submit(function() {
-
-                var form_values = $('#domain_form').serialize();
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'models/domain_suggestion.php',
-                    data: form_values,
-                    success: function(data) {
-
-                        //alert(data);
-                        $('#suggested').html(data);
-                    }
-                });
-                $('#suggested').show();
-                $('#suggested1').show();
-                $('#suggested2').show();
-                return false;
-            });
-
-        }
-
-        function emailMessage() {
-
-            //submit form
-            $('#email_form').submit(function() {
-
-                var form_values = $('#email_form').serialize();
-
-                $.ajax({
-                    type: 'POST',
-                    url: 'includes/contact-form.php',
-                    data: form_values,
-                    success: function(data) {
-
-                        //alert(data);
-                        $('#email_message').html(data);
-                    }
-                });
-                $('#email_message').show();
-                return false;
-            });
-        }
-    </script>
-
-
-
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/animsition/js/animsition.min.js"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/bootstrap/js/popper.js"></script>
-    <script type="text/javascript" src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/select2/select2.min.js"></script>
-    <script type="text/javascript">
-        $(".selection-1").select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $('#dropDownSelect1')
-        });
-    </script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
-    <script type="text/javascript" src="js/slick-custom.js"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/countdowntime/countdowntime.js"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/lightbox2/js/lightbox.min.js"></script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/sweetalert/sweetalert.min.js"></script>
-
-    <script>
-        function showEditBox(editobj, id) {
-            $('#frmAdd').hide();
-            $(editobj).prop('disabled', 'true');
-            var currentMessage = $("#message_" + id + " .message-content").html();
-            var editMarkUp = '<textarea rows="5" cols="80" id="txtmessage_' + id + '">' + currentMessage + '</textarea><button name="ok" onClick="callCrudAction(\'edit\',' + id + ')">Save</button><button name="cancel" onClick="cancelEdit(\'' + currentMessage + '\',' + id + ')">Cancel</button>';
-            $("#message_" + id + " .message-content").html(editMarkUp);
-
-
-        }
-
-        function cancelEdit(message, id) {
-            $("#message_" + id + " .message-content").html(message);
-            $('#frmAdd').show();
-        }
-
-        function cartAction(action, product_code) {
-            var queryString = "";
-            if (action != "") {
-                switch (action) {
-                    case "add":
-                        queryString = 'action=' + action + '&code=' + product_code + '&quantity=' + $("#qty_" + product_code).val();
-                        break;
-                    case "remove":
-                        queryString = 'action=' + action + '&code=' + product_code;
-                        break;
-                    case "empty":
-                        queryString = 'action=' + action;
-                        break;
-                }
-            }
-            jQuery.ajax({
-                url: "models/cart_action.php",
-                data: queryString,
-                type: "POST",
-                success: function(data) {
-
-
-                    if (action != "") {
-                        switch (action) {
-                            case "add":
-                                // $("#add_" + product_code).hide();
-                                // $("#added_" + product_code).show();
-
-                                break;
-                            case "remove":
-                                /// $("#add_" + product_code).show();
-                                //$("#added_" + product_code).hide();
-                                break;
-                            case "empty":
-                                //$(".btnAddAction").show();
-                                //$(".btnAdded").hide();
-                                break;
-                        }
-                    }
-                },
-                error: function() {}
-            });
-        }
-    </script>
-
-    <script type="text/javascript">
-        $('.block2-btn-addcart').each(function() {
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to cart !", "success");
-            });
-        });
-
-        $('.block2-btn-addwishlist').each(function() {
-            var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-            $(this).on('click', function() {
-                swal(nameProduct, "is added to wishlist !", "success");
-            });
-        });
-    </script>
-    <!--===============================================================================================-->
-    <script type="text/javascript" src="vendor/parallax100/parallax100.js"></script>
-    <script type="text/javascript">
-        $('.parallax100').parallax100();
-    </script>
-    <!--===============================================================================================-->
-    <script src="js/main.js"></script>
-
-</body>
-
-</html>
+    <?php
+    include 'footer.php';
+    ?>

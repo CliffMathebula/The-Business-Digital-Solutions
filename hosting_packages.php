@@ -68,9 +68,9 @@ if (!empty($product_array)) {
 				</div>
 			</div>
 			<div class="bg-dark">
-				<br />
+				<br /><br /><br />
 				<p class="Text text-center text-secondary">Quantity :
-					<input type="text" class="bg-secondary" id="qty_<?php echo $product_array[$key]["code"]; ?>" name="quantity" value="1" />
+					<input type="number" class="bg-secondary form-control" id="qty_<?php echo $product_array[$key]["code"]; ?>" name="quantity" value="1" />
 				</p>
 				<br />
 				</form>
