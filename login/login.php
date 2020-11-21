@@ -1,167 +1,201 @@
 <?php
 session_start();
+
 use Phppot\Member;
 
+if (isset($_SESSION["username"]) && isset($_SESSION['cart_item'])) {
+  $username = $_SESSION["username"];
+
+  header("Location: checkout.php");
+} elseif (!isset($_SESSION['cart_item']) && isset($_SESSION["username"])) {
+
+  header("Location: home.php");
+}
+
 if (!empty($_POST["login-btn"])) {
-	require_once __DIR__ . '/Model/Member.php';
-	$member = new Member();
-	$loginResult = $member->loginMember();
+  require_once __DIR__ . '/Model/Member.php';
+  $member = new Member();
+  $loginResult = $member->loginMember();
 }
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<title>lOGIN</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/png" href="../images/icons/favicon.png" />
-	<link rel="stylesheet" type="text/css" href="../vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/util.css">
-	<link rel="stylesheet" type="text/css" href="../css/main.css">
-
-	<link href="assets/css/phppot-style.css" type="text/css" rel="stylesheet" />
-	<link href="assets/css/user-registration.css" type="text/css" rel="stylesheet" />
-	<script src="vendor/jquery/jquery-3.3.1.js" type="text/javascript"></script>
-
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>The Business Digital Solutions Admin DashBoard</title>
+  <!-- plugins:css -->
+  <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+  <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
+  <!-- endinject -->
+  <!-- plugin css for this page -->
+  <!-- End plugin css for this page -->
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- endinject -->
+  <link rel="shortcut icon" href="images/tbds.jpeg" />
 </head>
 
-<body class="animsition">
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+      <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+        <a class="navbar-brand brand-logo mr-5" href="../index.php"><img src="images/tbds.jpeg" class="mr-2" alt="logo" /></a>
+        <a class="navbar-brand brand-logo-mini" href="../index.php"><img src="images/tbds.jpeg" alt="logo" /></a>
+      </div>
+      <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+        <ul class="navbar-nav mr-lg-2">
+          <li class="nav-item nav-search d-none d-lg-block">
+            <div class="input-group">
+              <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
+                <span class="input-group-text" id="search">
+                  <button class='btn btn-link'> <i class="ti-search"></i></button>
+                </span>
+              </div>
+              <input type="text" class="form-control" id="navbar-search-input" placeholder="Search now" aria-label="search" aria-describedby="search">
+            </div>
+          </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
 
-	<!-- Header -->
-	<header class="header1">
-		<!-- Header desktop -->
-		<div class="container-menu-header">
-			<div class="topbar">
+          <li class="nav-item dropdown">
+            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+              <i class="ti-shopping-cart mx-0"></i>
 
-			</div>
+              <?php if (isset($_SESSION["cart_item"])) {
+                $total_quantity = 0;
+                $total_price = 0;
 
-			<div class="wrap_header">
-				<!-- Logo -->
-				<a href="index.html">
-					<img src="../images/icons/tbds.jpeg" width="200" height="80" alt="IMG-LOGO">
-				</a>
+                foreach ($_SESSION["cart_item"] as $item) {
+                  $total_quantity += $item["quantity"];
+                }
+                echo '<strong class=" text text-success ">' . $total_quantity . '</strong>';
+              } else {
+                echo '<strong class="text text-danger">0</strong>';
+              }
+              ?> </a>
+            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
+              <p class="mb-0 font-weight-normal float-left dropdown-header">Cart Items</p>
+              <?php if (isset($_SESSION["cart_item"])) {
+                $total_quantity = 0;
+                $total_price = 0;
 
-				<!-- Menu -->
-				<div class="wrap_menu">
-					<nav class="menu">
-						<ul class="main_menu">
-							<li>
-								<a href="index.html">Home</a>
-							</li>
+                foreach ($_SESSION["cart_item"] as $item) {
+                  $total_quantity += $item["quantity"];
+                  echo '
+                                  <a class="dropdown-item">
+                                    <div class="item-thumbnail">
+                                      <div class="item-icon bg-success">
+                                        <i class="ti-shopping-cart mx-0"></i>
+                                      </div>
+                                    </div>
+                                    <div class="item-content">
+                                      <h6 class="font-weight-normal">Settings</h6>
+                                      <p class="font-weight-light small-text mb-0 text-muted">
+                                        Private message
+                                      </p>
+                                    </div>
+                                  </a>';
+                }
+                echo $total_quantity;
+              } else {
+                echo '0';
+              }
+              ?>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+          <span class="ti-view-list"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="content-wrapper d-flex align-items-center auth lock-full-bg">
+        <div class="row w-100">
+          <div class="col-lg-4 mx-auto">
+            <div class="auth-form-transparent text-left p-5 text-center">
+              <i class="ti-user icon-md text-white mb-0 mb-md-3 mb-xl-0"></i>
+              <p class="text text-white">User Login</p>
+              <hr />
+              <form name="login" action="" method="post" onsubmit="return loginValidation()">
+                <?php if (!empty($loginResult)) { ?>
+                  <div class="error-msg text-danger mt-4"><?php echo $loginResult . '<br/><br/>'; ?></div>
+                <?php } ?>
 
-							<li>
-								<a href="product.html">Shop</a>
-							</li>
+                <div class="form-group">
+                  <label for="examplePassword1" class="text text-white">User Name
+                    <span class="required error" id="username-info"></span>
+                  </label>
+                  <input type="text" class="form-control text-center text-white" name="username" id="username" placeholder="username">
+                </div>
+                <div class="form-group">
+                  <label for="examplePassword1" class="text text-white">Password to unlock
+                    <span class="required error" id="login-password-info"></span>
+                  </label>
+                  <input type="password" class="form-control text-center text-white" name="login-password" id="login-password" placeholder="Password">
+                </div>
 
-							<li class="sale-noti">
-								<a href="product.html">Sale</a>
-							</li>
+                <div class="mt-4">
+                  <input class="btn btn-block btn-success btn-lg font-weight-medium" type="submit" name="login-btn" id="login-btn" value="Login">
+                </div>
+                <div class="mt-3 text-center">
+                  <a href="../forgot_password/index.php" class="auth-link text-white">Forgot Password?</a>
+                </div>
 
-							<li>
-								<a href="cart.html">Features</a>
-							</li>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- content-wrapper ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+  </div>
+  <!-- container-scroller -->
+  <!-- plugins:js -->
+  <script src="../../vendors/base/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="../../js/off-canvas.js"></script>
+  <script src="../../js/hoverable-collapse.js"></script>
+  <script src="../../js/template.js"></script>
+  <script src="../../js/todolist.js"></script>
+  <!-- endinject -->
 
-							<li>
-								<a href="blog.html">Blog</a>
-							</li>
+  <script>
+    function loginValidation() {
+      var valid = true;
+      $("#username").removeClass("error-field");
+      $("#password").removeClass("error-field");
 
-							<li>
-								<a href="about.html">About</a>
-							</li>
+      var UserName = $("#username").val();
+      var Password = $('#login-password').val();
 
-							<li>
-								<a href="contact.html">Contact</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
+      $("#username-info").html("").hide();
 
-				<!-- Header Icon -->
-				<div class="header-icons">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="../images/icons/icon-header-01.png" class="header-icon1" alt="ICON">
-					</a>
+      if (UserName.trim() == "") {
+        $("#username-info").html("required.").css("color", "#ee0000").show();
+        $("#username").addClass("error-field");
+        valid = false;
+      }
+      if (Password.trim() == "") {
+        $("#login-password-info").html("required.").css("color", "#ee0000").show();
+        $("#login-password").addClass("error-field");
+        valid = false;
+      }
+      if (valid == false) {
+        $('.error-field').first().focus();
+        valid = false;
+      }
+      return valid;
+    }
+  </script>
+</body>
 
-					<span class="linedivide1"></span>
-
-					<div class="header-wrapicon2">
-						<img src="../images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
-
-					</div>
-				</div>
-			</div>
-		</div>
-		<BR /><BR /><BR /><BR /><BR /><BR />
-
-		<div class="phppot-container">
-			<div class="sign-up-container">
-				<div class="login-signup">
-					<a href="user-registration.php">Sign up</a>
-				</div>
-				<div class="signup-align">
-					<form name="login" action="" method="post" onsubmit="return loginValidation()">
-						<div class="signup-heading">Login</div>
-						<?php if (!empty($loginResult)) { ?>
-							<div class="error-msg"><?php echo $loginResult; ?></div>
-						<?php } ?>
-						<div class="row">
-							<div class="inline-block">
-								<div class="form-label">
-									Username<span class="required error" id="username-info"></span>
-								</div>
-								<input class="input-box-330 border border-dark" type="text" name="username" id="username">
-							</div>
-						</div>
-						<div class="row">
-							<div class="inline-block">
-								<div class="form-label">
-									Password<span class="required error" id="login-password-info"></span>
-								</div>
-								<input class="input-box-330 border border-dark" type="password" name="login-password" id="login-password">
-							</div>
-						</div>
-						<div class="row">
-							<input class="btn" type="submit" name="login-btn" id="login-btn" value="Login">
-						</div>
-
-						<div class="row">
-							<a href="../forgot_password" class="text text-success"> Forgot Password</a>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-
-		<script>
-			function loginValidation() {
-				var valid = true;
-				$("#username").removeClass("error-field");
-				$("#password").removeClass("error-field");
-
-				var UserName = $("#username").val();
-				var Password = $('#login-password').val();
-
-				$("#username-info").html("").hide();
-
-				if (UserName.trim() == "") {
-					$("#username-info").html("required.").css("color", "#ee0000").show();
-					$("#username").addClass("error-field");
-					valid = false;
-				}
-				if (Password.trim() == "") {
-					$("#login-password-info").html("required.").css("color", "#ee0000").show();
-					$("#login-password").addClass("error-field");
-					valid = false;
-				}
-				if (valid == false) {
-					$('.error-field').first().focus();
-					valid = false;
-				}
-				return valid;
-			}
-		</script>
-</BODY>
-
-</HTML>
+</html>

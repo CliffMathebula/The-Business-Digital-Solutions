@@ -1,14 +1,17 @@
 <?php
 session_start();
 if (isset($_SESSION["username"])) {
-    $username = $_SESSION["username"];
-    session_write_close();
+    if (!isset($_SESSION["cart_item"])) {
+        header("Location: ../cart.php");
+    } else {
+        $username = $_SESSION["username"];
+    }
 } else {
     // since the username is not set in session, the user is not-logged-in
     // he is trying to access this page unauthorized
     // so let's clear all session variables and redirect him to index
-    session_unset();
-    session_write_close();
+    //session_unset();
+    //session_write_close();
     $url = "./index.php";
     header("Location: $url");
 }
@@ -32,6 +35,45 @@ if (isset($_SESSION["username"])) {
     <script src="vendor/jquery/jquery-3.3.1.js" type="t./../ext/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div id="paypal-button"></div>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script>
+        paypal.Button.render({
+            // Configure environment
+            env: 'sandbox',
+            client: {
+                sandbox: 'demo_sandbox_client_id',
+                production: 'demo_production_client_id'
+            },
+            // Customize button (optional)
+            locale: 'en_US',
+            style: {
+                size: 'small',
+                color: 'gold',
+                shape: 'pill',
+            },
+            // Set up a payment
+            payment: function(data, actions) {
+                return actions.payment.create({
+                    transactions: [{
+                        amount: {
+                            total: '0.01',
+                            currency: 'USD'
+                        }
+                    }]
+                });
+            },
+            // Execute the payment
+            onAuthorize: function(data, actions) {
+                return actions.payment.execute()
+                    .then(function() {
+                        // Show a confirmation message to the buyer
+                        window.alert('Thank you for your purchase!');
+                    });
+            }
+        }, '#paypal-button');
+    </script>
     <style>
         body {
             font-family: Arial;
@@ -166,24 +208,22 @@ if (isset($_SESSION["username"])) {
                     <nav class="menu">
                         <ul class="main_menu">
                             <li>
-                                <a href="./../index.php">Home</a>
+                                <a href="./../index.php">HOME</a>
                             </li>
-
                             <li>
-                                <a href="./../index.php#Products">Products & Services</a>
+                                <a href="./../index.php#Products">SHOP</a>
                             </li>
-
                             <li>
-                                <a href="about.html">About</a>
+                                <a href="contact.html">CONTACT</a>
                             </li>
-
                             <li>
-                                <a href="contact.html">Contact</a>
+                                <a href="home.php">ADMIN DASHBOARD</a>
                             </li>
-
-
+                            <li>
+                                <a href="about.html">ABOUT</a>
+                            </li>
                             <li class="sale-noti">
-                                <a href="logout.php">Sign Out</a>
+                                <a href="logout.php"><strong>LOG-OUT</strong></a>
                             </li>
 
                         </ul>
@@ -221,28 +261,39 @@ if (isset($_SESSION["username"])) {
             <div class="col-75">
                 <div class="container">
 
-                    <form action="/action_page.php">
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr"
+            method="post" target="_top">
+            <input type='hidden' name='business'
+                value='PayPal Business Email'> <input type='hidden'
+                name='item_name' value='Camera'> <input type='hidden'
+                name='item_number' value='CAM#N1'> <input type='hidden'
+                name='amount' value='10'> <input type='hidden'
+                name='no_shipping' value='1'> <input type='hidden'
+                name='currency_code' value='USD'> <input type='hidden'
+                name='notify_url'
+                value='http://sitename/paypal-payment-gateway-integration-in-php/notify.php'>
+            
 
                         <div class="row">
                             <div class="col-50">
                                 <h3 class="text text-dark mt-4"><small>BILLING ADDRESS</small></h3>
                                 <label class="mt-4" for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                <input type="text" class="border border-dark" id="fname" name="firstname" placeholder="John M. Doe" required/>
+                                <input type="text" class="border border-dark" id="fname" name="firstname" placeholder="John M. Doe" required />
                                 <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                <input type="text" id="email" class="border border-dark" name="email" placeholder="john@example.com" required/>
+                                <input type="text" id="email" class="border border-dark" name="email" placeholder="john@example.com" required />
                                 <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                                <input type="text" id="adr" class="border border-dark" name="address" placeholder="Street Address" required/>
+                                <input type="text" id="adr" class="border border-dark" name="address" placeholder="Street Address" required />
                                 <label for="city"><i class="fa fa-institution"></i> City</label>
-                                <input type="text" id="city" class="border border-dark" name="city" placeholder="Johannesburg" required/>
+                                <input type="text" id="city" class="border border-dark" name="city" placeholder="Johannesburg" required />
 
                                 <div class="row">
                                     <div class="col-50">
                                         <label for="state">Surbub</label>
-                                        <input type="text" id="surbub" class="border border-dark" name="surbub" placeholder="Johannesburg South" required/>
+                                        <input type="text" id="surbub" class="border border-dark" name="surbub" placeholder="Johannesburg South" required />
                                     </div>
                                     <div class="col-50">
                                         <label for="zip">Postal Code</label>
-                                        <input type="text" class="border border-dark" id="postal_code" name="postal_code" placeholder="2000" required/>
+                                        <input type="text" class="border border-dark" id="postal_code" name="postal_code" placeholder="2000" required />
                                     </div>
                                 </div>
                             </div>
@@ -254,24 +305,24 @@ if (isset($_SESSION["username"])) {
                                     <i class="fa fa-cc-visa" style="color:navy;"></i>
                                     <i class="fa fa-cc-mastercard" style="color:red;"></i>
                                     <i class="fa fa-cc-discover" style="color:orange;"></i>
-                                    
+
                                     <i class="fa fa-cc-paypal" style="color:blue;"></i>
                                 </div>
 
                                 <label for="cname">Names Printed on Card</label>
-                                <input type="text" class="border border-dark" id="cname" name="cardname" placeholder="John More Doe" require/>
+                                <input type="text" class="border border-dark" id="cname" name="cardname" placeholder="John More Doe" require />
                                 <label for="ccnum">Credit card number</label>
-                                <input type="text" class="border border-dark" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" require/>
+                                <input type="text" class="border border-dark" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" require />
                                 <label for="expmonth">Exp Month</label>
-                                <input type="text" id="expmonth" class="border border-dark" name="expmonth" placeholder="September" required/>
+                                <input type="text" id="expmonth" class="border border-dark" name="expmonth" placeholder="September" required />
                                 <div class="row">
                                     <div class="col-50">
                                         <label for="expyear">Exp Year</label>
-                                        <input type="text" class="border border-dark" id="expyear" name="expyear" placeholder="2022" required/>
+                                        <input type="text" class="border border-dark" id="expyear" name="expyear" placeholder="2022" required />
                                     </div>
                                     <div class="col-50">
                                         <label for="cvv">CVV</label>
-                                        <input type="text" id="cvv" class="border border-dark" name="cvv" placeholder="352" required/>
+                                        <input type="text" id="cvv" class="border border-dark" name="cvv" placeholder="352" required />
                                     </div>
                                 </div>
                             </div>
@@ -279,7 +330,14 @@ if (isset($_SESSION["username"])) {
                         <label>
                             <input type="checkbox" name="sameadr"> Shipping address same as billing
                         </label>
-                        <input type="submit" value="Continue to checkout" class="bg-dark btn btninfo" />
+
+                        <input type='hidden' name='cancel_return'
+                value='http://sitename/paypal-payment-gateway-integration-in-php/cancel.php'>
+            <input type='hidden' name='return'
+                value='http://sitename/paypal-payment-gateway-integration-in-php/return.php'>
+            <input type="hidden" name="cmd" value="_xclick">
+                        <input type="submit" name="pay_now" id="pay_now"
+                Value="Pay Now" class="bg-dark btn btninfo" />
                     </form>
                 </div>
             </div>
@@ -338,6 +396,6 @@ if (isset($_SESSION["username"])) {
             </div>
         </div>
 
-<?php
-    include './../footer.php';
-?>
+        <?php
+        include './../footer.php';
+        ?>

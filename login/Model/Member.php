@@ -1,8 +1,8 @@
 <?php
+
 namespace Phppot;
 
 session_start();
-
 
 class Member
 {
@@ -19,7 +19,8 @@ class Member
      *
      * @param string $username
      * @return boolean
-     */
+     **/
+
     public function isUsernameExists($username)
     {
         $query = 'SELECT * FROM users_table where username = ?';
@@ -46,7 +47,8 @@ class Member
      *
      * @param string $email
      * @return boolean
-     */
+     **/
+
     public function isEmailExists($email)
     {
         $query = 'SELECT * FROM users_table where email = ?';
@@ -147,18 +149,14 @@ class Member
             // login sucess so store the member's username in
             // the session
             $_SESSION["username"] = $memberRecord[0]["username"];
-            
-            $url = "./home.php";
 
-            if (isset($_SESSION["cart_item"])) {
-
-                header("Location: ./checkout.php");
-            } else {
-                header("Location: $url");
+            if (isset($_SESSION["username"]) && isset($_SESSION['cart_item'])) {
+                header("Location: checkout.php");
+            } elseif (!isset($_SESSION['cart_item']) && isset($_SESSION["username"])) {
+                header("Location: home.php");
             }
-            session_write_close();
         } else if ($loginPassword == 0) {
-            $loginStatus = "Invalid username or password.";
+            $loginStatus = "Invalid username or password!.";
             return $loginStatus;
         }
     }
