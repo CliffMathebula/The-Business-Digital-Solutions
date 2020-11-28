@@ -2,12 +2,11 @@
 session_start();
 if (isset($_SESSION["username"])) {
   $username = $_SESSION["username"];
-  
 } else {
   // since the username is not set in session, the user is not-logged-in
   // he is trying to access this page unauthorized
   // so let's clear all session variables and redirect him to index
-  
+
   $url = "./index.php";
   header("Location: $url");
 }
@@ -59,7 +58,7 @@ if (isset($_SESSION["username"])) {
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="ti-shopping-cart mx-0"></i>
-              
+
               <?php if (isset($_SESSION["cart_item"])) {
                 $total_quantity = 0;
                 $total_price = 0;
@@ -67,7 +66,7 @@ if (isset($_SESSION["username"])) {
                 foreach ($_SESSION["cart_item"] as $item) {
                   $total_quantity += $item["quantity"];
                 }
-                echo '<strong class=" text text-success ">'.$total_quantity.'</strong>';
+                echo '<strong class=" text text-success ">' . $total_quantity . '</strong>';
               } else {
                 echo '<strong class="text text-danger">0</strong>';
               }
@@ -91,15 +90,15 @@ if (isset($_SESSION["username"])) {
                                     </div>
                                     <div class="item-content">
                                       <p class="font-weight-light small-text mb-0 text-muted">
-                                        '.$item["product_name"].'
+                                        ' . $item["product_name"] . '
                                       </p>
                                       <p class="font-weight-light small-text mb-0 text-muted">
-                                        R'.$item["price_per_month"].'
+                                        R' . $item["price_per_month"] . '
                                       </p>
                                     </div>
                                   </a>';
                 }
-                
+
                 echo '
                 <a class="dropdown-item">
                   <div class="item-thumbnail">
@@ -109,7 +108,7 @@ if (isset($_SESSION["username"])) {
                   </div>
                   <div class="item-content">
                     <p class="font-weight-normal small-text mb-0 text-muted">
-                      Total Price R'.$total_price.'
+                      Total Price R' . $total_price . '
                     </p>
                     
                   </div>
