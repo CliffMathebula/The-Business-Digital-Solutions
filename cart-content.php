@@ -3,6 +3,13 @@ session_start();
 require_once("models/dbcontroller.php");
 $db_handle = new DBController();
 
+/**
+ *checks if the cart is not empty  
+ * if cart is not empty displays cat items and total and link to checkout or view cart 
+ * 
+ * Else if the  caart items is empty dispays message cat empty and link to shop
+ * 
+ **/
 if (isset($_SESSION["cart_item"])) {
     $total_quantity = 0;
     $total_price = 0;
@@ -12,12 +19,10 @@ if (isset($_SESSION["cart_item"])) {
 ?>
         <ul class="header-cart-wrapitem">
             <li class="header-cart-item">
-
                 <div class="header-cart-item-txt">
                     <a href="#" class="header-cart-item-name">
                         <?php echo $item["product_name"]; ?>
                     </a>
-
                     <span class="header-cart-item-info">
                         <?php
                         echo $item["quantity"];
@@ -26,37 +31,33 @@ if (isset($_SESSION["cart_item"])) {
                 </div>
             </li>
         </ul>
-        <?php $total_price += ($item["price_per_month"] * $item["quantity"]); ?>
-
-        <?php $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
+    <?php
+        $total_price += ($item["price_per_month"] * $item["quantity"]);
+        $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
         $total = number_format($total, 2);
-        ?>
-
-<?php
     }
-    echo '<div class="header-cart-total">
-    Total : R' . $total . '</div>';
-} else {
-    echo '    <div class="flex-c-m size22 bg0 s-text21 pos-relative">
-            Your Cart Is Empty!
+    echo '<div class="header-cart-total">Total : R' . $total . '</div>';
+    ?>
+    <div class="header-cart-buttons">
+        <div class="header-cart-wrapbtn">
+            <!-- link to redirect to cart-->
+            <a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                View Cart
+            </a>
+        </div>
+        <div class="header-cart-wrapbtn">
+            <!-- link to redirect to checkout form-->
+            <a href="login/checkout.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                Check Out
+            </a>
+        </div>
+    </div>
+<?php
+} else { //if cart is empty display below message with link to shop
+    echo ' <div class="flex-c-m size22 bg0 s-text21 pos-relative"> Your Cart Is Empty!
             <a href="index.php#Products" class="s-text22 hov6 p-l-5">
                 Shop Now
             </a>
         </div>';
 }
 ?>
-<div class="header-cart-buttons">
-    <div class="header-cart-wrapbtn">
-        <!-- Button -->
-        <a href="cart.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-            View Cart
-        </a>
-    </div>
-
-    <div class="header-cart-wrapbtn">
-        <!-- Button -->
-        <a href="login/checkout.php" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-            Check Out
-        </a>
-    </div>
-</div>
