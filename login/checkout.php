@@ -13,30 +13,29 @@ if (isset($_SESSION["username"])) {
     header("Location: $url");
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>The Business Digital Solutions Check Out Form</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/png" href=",/../images/icons/favicon.png" />
-    <link rel="stylesheet" type="text/css" href="./../vendor/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="./../css/util.css">
-    <link rel="stylesheet" type="text/css" href="./../css/main.css">
-    <link href="assets/css/user-registration.css" type="./../text/css" rel="stylesheet" />
-    <script src="vendor/jquery/jquery-3.3.1.js" type="t./../ext/javascript"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Checkout Form</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="vendors/base/vendor.bundle.base.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="images/tbds.jpeg" />
+    <link href="assets/css/phppot-style.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/user-registration.css" type="text/css" rel="stylesheet" />
+    <script src="vendor/jquery/jquery-3.3.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="./jquery.min.js"></script>
     <style>
-        body {
-            font-family: Arial;
-            font-size: 17px;
-            padding: 8px;
-        }
-
         * {
             box-sizing: border-box;
         }
@@ -82,52 +81,18 @@ if (isset($_SESSION["username"])) {
             border-radius: 3px;
         }
 
-        input[type=text] {
-            width: 100%;
-            margin-bottom: 20px;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-        }
-
-        label {
-            margin-bottom: 10px;
-            display: block;
-        }
-
         .icon-container {
             margin-bottom: 20px;
             padding: 7px 0;
             font-size: 24px;
         }
 
-        .btn {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px;
-            margin: 10px 0;
-            border: none;
-            width: 100%;
-            border-radius: 3px;
-            cursor: pointer;
-            font-size: 17px;
-        }
-
-        .btn:hover {
-            background-color: #45a049;
-        }
-
         a {
             color: #2196F3;
         }
 
-        hr {
-            border: 1px solid lightgrey;
-        }
-
         span.price {
             float: right;
-            color: grey;
         }
 
         /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
@@ -142,135 +107,118 @@ if (isset($_SESSION["username"])) {
         }
     </style>
 </head>
+</body>
+<div class="container-scroller">
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href="../index.php"><img src="images/tbds.jpeg" class="mr-2" alt="logo" /></a>
+            <a class="navbar-brand brand-logo-mini" href="../index.php"><img src="images/tbds.jpeg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <ul class="navbar-nav navbar-nav-center">
+                <li class="nav-item text-right">
+                    <a href="../#Products" class="text text-dark">Shop</a>
+                </li>
+                <li class="nav-item text-right">
+                    <a href="../#Products" class="text text-dark">Book Us</a>
+                </li>
+                <li class="nav-item text-right">
+                    <a href="../#Products" class="text text-dark">Contact Us</a>
+                </li>
+                <li class="nav-item text-right">
+                    <a href="../#Products" class="text text-dark">About Us</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
+                        <i class="ti-shopping-cart mx-0"></i>
+                        <?php
+                        if (isset($_SESSION["cart_item"])) {
+                            $total_quantity = 0;
+                            $total_price = 0;
 
-<body class="animsition">
-    <!-- Header -->
-    <header class="header1">
-        <!-- Header desktop -->
-        <div class="container-menu-header">
-            <div class="wrap_header">
-                <!-- Logo -->
-                <a href="index.html">
-                    <img src="./../images/icons/tbds.jpeg" width="200" height="80" alt="IMG-LOGO">
-                </a>
-                <!-- Menu -->
-                <div class="wrap_menu">
-                    <nav class="menu">
-                        <ul class="main_menu">
-                            <li>
-                                <a href="./../index.php">Home</a>
-                            </li>
-                            <li>
-                                <a href="./../index.php#Products">Shop</a>
-                            </li>
-                            <li>
-                                <a href="./../index.php#Contact">Contact Us</a>
-                            </li>
-                            <li>
-                                <a href="about.html">About</a>
-                            </li>
-                            <li class="sale-noti">
-                                <a href="logout.php"><strong>Sign-out</strong></a>
-                            </li>
-                            <li>
-                                <a href="home.php" class="flex-c-m size4 text-white bg-dark hov1 trans-0-4">
-                                    &nbsp; <small><strong>CUSTOMER DASHBOARD</strong></small> &nbsp;
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <!-- Header Icon -->
-                <div class="header-icons">
-                    <div class="header-wrapicon2">
-                        <a href="./../cart.php"> <img src="./../images/icons/icon-header-02.png" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                            <span class="header-icons-noti">
-                                <?php if (isset($_SESSION["cart_item"])) {
-                                    $total_quantity = 0;
-                                    $total_price = 0;
-
-                                    foreach ($_SESSION["cart_item"] as $item) {
-                                        $total_quantity += $item["quantity"];
-                                    }
-                                    echo $total_quantity;
-                                } else {
-                                    echo '0';
-                                }
-                                ?>
-                            </span>
-                        </a>
+                            foreach ($_SESSION["cart_item"] as $item) {
+                                $total_quantity += $item["quantity"];
+                            }
+                            echo '<strong class=" text text-success ">' . $total_quantity . '</strong>';
+                        } else {
+                            echo '<strong class="text text-danger">0</strong>';
+                        }
+                        ?>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div> <br /><br />
+<!-- Checkout fomr -->
+<div class="mt-4">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-8 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">CheckOut Form</h4>
+                        <p class="card-description">
+                            Fill the form below to complete CheckingOur Order
+                        </p>
+                        <p class="alert alert-warning" id="success_tag"></p>
+                        <form class="forms-sample" id="checkout">
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">First Name</label>
+                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputUsername1">Mobile Number</label>
+                                <input type="number" class="form-control" id="mobile" name="mobile" placeholder="0659056171" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="SelectGender">Gender</label>
+                                <select class="form-control" id="SelectGender" name="SelectGender" required>
+                                    <option vale="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputCity1">Country</label>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="Country" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputCity1">City</label>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="InputCity1">Surbub</label>
+                                <input type="text" class="form-control" id="surbub" id="surbub" placeholder="Surbub" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="Textarea1">Street Address</label>
+                                <textarea class="form-control" id="street_address" name="street_address" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-check-label text-success">
+                                    <input type="checkbox" id="ckeckbox" name="ckeckbox" class="form-control mt-2" required>
+                                    <strong> By ticking this checkbox, you officially accept our terms & Conditions! </strong>
+                                </label>
+                            </div>
+                            <button type="submit" id="submit" name="submit" class="btn btn-primary mr-2">Submit</button>
+                            <button class="btn btn-light">Cancel</button>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
-        <br /><br /><br />
-        <h2 class="text text-center text-dark mt-4 "><small>INVOICE CHECKOUT FORM</small></h2>
-        <p class="text text-dark text-center mt-4">Please Complete The Form Below To Complete Your Order!</p>
-        <div class="row mt-4">
-            <div class="col-75">
+            <!-- Cart Items -->
+            <div class="col-25 mt-2">
                 <div class="container">
-
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                        <input type='hidden' name='business' value='climathe1@gmail.com'>
-                        <input type='hidden' name='item_name' value='hosting & domain'>
-                        <input type='hidden' name='item_number' value='CAM#N1'>
-                        <input type='hidden' name='amount' value='10'>
-                        <input type='hidden' name='no_shipping' value='1'>
-                        <input type='hidden' name='currency_code' value='USD'>
-                        <input type='hidden' name='notify_url' value='localhost/paypal-payment-gateway-integration-in-php/notify.php'>
-
-                        <div class="row">
-                            <div class="col-50">
-                                <h3 class="text text-dark mt-4"><small>BILLING ADDRESS</small></h3>
-                                <label class="mt-4" for="fname"><i class="fa fa-user"></i> Full Name</label>
-                                <input type="text" class="border border-dark" id="fname" name="firstname" placeholder="John M. Doe" required />
-                                <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                                <input type="text" id="email" class="border border-dark" name="email" placeholder="john@example.com" required />
-                                <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                                <input type="text" id="adr" class="border border-dark" name="address" placeholder="Street Address" required />
-                                <label for="city"><i class="fa fa-institution"></i> City</label>
-                                <input type="text" id="city" class="border border-dark" name="city" placeholder="Johannesburg" required />
-
-                                <div class="row">
-                                    <div class="col-50">
-                                        <label for="state">Surbub</label>
-                                        <input type="text" id="surbub" class="border border-dark" name="surbub" placeholder="Johannesburg South" required />
-                                    </div>
-                                    <div class="col-50">
-                                        <label for="zip">Postal Code</label>
-                                        <input type="text" class="border border-dark" id="postal_code" name="postal_code" placeholder="2000" required />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-50">
-                                <h3 class="text text-dark mt-4"> <small>PAYMENT OPTIONS</small></h3>
-                                <label class="mt-4" for="fname">Accepted Payments Methods</label>
-                                <div class="icon-container ">
-                                    <i class="fa fa-cc-paypal" style="color:blue;"></i> <input type="checkbox" name="paypal">
-                                    <p class="text text-primary">Direct Electronic Fund Transfer <input type="checkbox" name="eft"></p>
-                                    <hr />
-                                    <p class="text text-info">Banking Detail Will Be Emailed To You On CheckOut Invoice.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <label>
-                            <input type="checkbox" name="sameadr"> Shipping address same as billing
-                        </label>
-
-                        <input type='hidden' name='cancel_return' value='localhost/paypal-payment-gateway-integration-in-php/cancel.php'>
-                        <input type='hidden' name='return' value='localhost/paypal-payment-gateway-integration-in-php/return.php'>
-                        <input type="hidden" name="cmd" value="_xclick">
-                        <input type="submit" name="pay_now" id="pay_now" Value="Pay Now" class="bg-dark btn btninfo" />
-                    </form>
-                </div>
-            </div>
-
-            <div class="col-25">
-                <div class="container">
-
                     <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i>
                             <b><?php if (isset($_SESSION["cart_item"])) {
                                     $total_quantity = 0;
@@ -283,7 +231,9 @@ if (isset($_SESSION["username"])) {
                                 } else {
                                     echo '0';
                                 }
-                                ?></b></span></h4>
+                                ?></b>
+                        </span>
+                    </h4>
                     <?php
                     if (isset($_SESSION["cart_item"])) {
                         $total_quantity = 0;
@@ -299,7 +249,6 @@ if (isset($_SESSION["username"])) {
                     } else {
                         echo '<p class="text text-danger"> Cart Is Empty! <a href="index.php#Products"> Shop Now</a>';
                     }
-
                     ?>
                     <hr>
                     <p class="text text-info"><small><strong>Total Incl VAT@ 0.15%</strong> </small> <span class="price" style="color:black"><b>
@@ -316,11 +265,69 @@ if (isset($_SESSION["username"])) {
                                     echo 'R.0.00';
                                 }
                                 ?>
-                            </b></span></p>
+                            </b>
+                        </span>
+                    </p>
                 </div>
             </div>
         </div>
+        <!-- footer -->
+        <footer class="footer">
+            <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2020 <a href="http://thebusinessdigitalsolutions.co.za/" target="_blank">The Business Digital Solutions</a>. All rights reserved.</span>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Designed & Mentained By The Business Digital Solutions </span>
+            </div>
+        </footer>
+    </div>
+    <!-- main-panel ends -->
+</div>
+<!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+<!-- plugins:js -->
+<script src="vendors/base/vendor.bundle.base.js"></script>
+<!-- endinject -->
+<!-- inject:js -->
+<script src="js/off-canvas.js"></script>
+<script src="js/hoverable-collapse.js"></script>
+<script src="js/template.js"></script>
+<script src="js/todolist.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="js/file-upload.js"></script>
+<!-- End custom js for this page-->
+<script>
+    //page onload
+    $(document).ready(function() {
+        /** Auto Refresh Pages Refresh  **/
+        setInterval(function() {
+            $("#items").load('items.php')
+        }, 1000);
+        checkout();
+    });
 
-        <?php
-        include './../footer.php';
-        ?>
+    function checkout() {
+        //submit checkout form
+        $('#checkout').submit(function() {
+            //assigns form data
+            var form_values = $('#checkout').serialize();
+            //Ajax function to submit data
+            $.ajax({
+                type: 'POST',
+                url: 'checkout_script.php',
+                data: form_values,
+                success: function(data) {
+                    //alert(data);
+                    $('#success_tag').html(data);
+                }
+            });
+
+            $('#checkout_status').show();
+            return false;
+        });
+    }
+</script>
+
+</body>
+
+</html>
