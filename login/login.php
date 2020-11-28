@@ -97,7 +97,6 @@ if (!empty($_POST["login-btn"])) {
                 <?php if (!empty($loginResult)) { ?>
                   <div class="error-msg text-danger mt-4"><?php echo $loginResult . '<br/><br/>'; ?></div>
                 <?php } ?>
-
                 <div class="form-group">
                   <label for="examplePassword1" class="text text-white">User Name
                     <span class="required error" id="username-info"></span>
@@ -115,6 +114,9 @@ if (!empty($_POST["login-btn"])) {
                 </div>
                 <div class="mt-3 text-center">
                   <a href="../forgot_password/index.php" class="auth-link text-white">Forgot Password?</a>
+                </div>
+                <div class="mt-3 text-center">
+                  <a href="user-registration.php" class="auth-link text-white">Sign-Up Now</a>
                 </div>
               </form>
             </div>
