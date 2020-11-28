@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright (C) Phppot
  *
@@ -6,6 +7,7 @@
  * In essense, you can do commercial use, modify, distribute and private use.
  * Though not mandatory, you are requested to attribute Phppot URL in your code or website.
  */
+
 namespace Phppot;
 
 /**
@@ -21,11 +23,8 @@ class DataSource
     // when using above 7.1.0, declare the below constants as private
     // for better encapsulation
     const HOST = 'localhost';
-
     const USERNAME = 'root';
-
     const PASSWORD = '1989@Cliff';
-
     const DATABASENAME = 'tbds_hosting';
 
     private $conn;
@@ -93,7 +92,7 @@ class DataSource
     {
         $stmt = $this->conn->prepare($query);
 
-        if (! empty($paramType) && ! empty($paramArray)) {
+        if (!empty($paramType) && !empty($paramArray)) {
 
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
@@ -106,7 +105,7 @@ class DataSource
             }
         }
 
-        if (! empty($resultset)) {
+        if (!empty($resultset)) {
             return $resultset;
         }
     }
@@ -140,7 +139,7 @@ class DataSource
     {
         $stmt = $this->conn->prepare($query);
 
-        if (! empty($paramType) && ! empty($paramArray)) {
+        if (!empty($paramType) && !empty($paramArray)) {
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }
         $stmt->execute();
@@ -157,9 +156,9 @@ class DataSource
      */
     public function bindQueryParams($stmt, $paramType, $paramArray = array())
     {
-        $paramValueReference[] = & $paramType;
-        for ($i = 0; $i < count($paramArray); $i ++) {
-            $paramValueReference[] = & $paramArray[$i];
+        $paramValueReference[] = &$paramType;
+        for ($i = 0; $i < count($paramArray); $i++) {
+            $paramValueReference[] = &$paramArray[$i];
         }
         call_user_func_array(array(
             $stmt,
@@ -174,11 +173,12 @@ class DataSource
      * @param string $paramType
      * @param array $paramArray
      * @return array
-     */
+     * 
+     **/
     public function getRecordCount($query, $paramType = "", $paramArray = array())
     {
         $stmt = $this->conn->prepare($query);
-        if (! empty($paramType) && ! empty($paramArray)) {
+        if (!empty($paramType) && !empty($paramArray)) {
 
             $this->bindQueryParams($stmt, $paramType, $paramArray);
         }

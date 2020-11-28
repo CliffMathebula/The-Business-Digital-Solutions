@@ -60,7 +60,6 @@ if (!empty($_POST["login-btn"])) {
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-
           <li class="nav-item dropdown">
             <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
               <i class="ti-shopping-cart mx-0"></i>
@@ -77,35 +76,6 @@ if (!empty($_POST["login-btn"])) {
                 echo '<strong class="text text-danger">0</strong>';
               }
               ?> </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Cart Items</p>
-              <?php if (isset($_SESSION["cart_item"])) {
-                $total_quantity = 0;
-                $total_price = 0;
-
-                foreach ($_SESSION["cart_item"] as $item) {
-                  $total_quantity += $item["quantity"];
-                  echo '
-                                  <a class="dropdown-item">
-                                    <div class="item-thumbnail">
-                                      <div class="item-icon bg-success">
-                                        <i class="ti-shopping-cart mx-0"></i>
-                                      </div>
-                                    </div>
-                                    <div class="item-content">
-                                      <h6 class="font-weight-normal">Settings</h6>
-                                      <p class="font-weight-light small-text mb-0 text-muted">
-                                        Private message
-                                      </p>
-                                    </div>
-                                  </a>';
-                }
-                echo $total_quantity;
-              } else {
-                echo '0';
-              }
-              ?>
-            </div>
           </li>
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
@@ -140,14 +110,12 @@ if (!empty($_POST["login-btn"])) {
                   </label>
                   <input type="password" class="form-control text-center text-white" name="login-password" id="login-password" placeholder="Password">
                 </div>
-
                 <div class="mt-4">
                   <input class="btn btn-block btn-success btn-lg font-weight-medium" type="submit" name="login-btn" id="login-btn" value="Login">
                 </div>
                 <div class="mt-3 text-center">
                   <a href="../forgot_password/index.php" class="auth-link text-white">Forgot Password?</a>
                 </div>
-
               </form>
             </div>
           </div>

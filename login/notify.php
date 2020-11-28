@@ -6,6 +6,7 @@ define("DEBUG", 1);
 // Set to 0 once you're ready to go live
 define("USE_SANDBOX", 1);
 define("LOG_FILE", "ipn.log");
+
 // Read POST data
 // reading posted data directly from $_POST causes serialization
 // issues with array data in POST. Reading raw POST data from input stream instead.
@@ -17,11 +18,13 @@ foreach ($raw_post_array as $keyval) {
 	if (count($keyval) == 2)
 		$myPost[$keyval[0]] = urldecode($keyval[1]);
 }
+
 // read the post from PayPal system and add 'cmd'
 $req = 'cmd=_notify-validate';
 if(function_exists('get_magic_quotes_gpc')) {
 	$get_magic_quotes_exists = true;
 }
+
 foreach ($myPost as $key => $value) {
 	if($get_magic_quotes_exists == true && get_magic_quotes_gpc() == 1) {
 		$value = urlencode(stripslashes($value));
@@ -30,6 +33,7 @@ foreach ($myPost as $key => $value) {
 	}
 	$req .= "&$key=$value";
 }
+
 // Post IPN data back to PayPal to validate the IPN data is genuine
 // Without this step anyone can fake IPN data
 if(USE_SANDBOX == true) {
@@ -102,6 +106,7 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	if($payment_status == "Completed") {
 		$isPaymentCompleted = true;
 	}
+
 	// check that txn_id has not been previously processed
 	$isUniqueTxnId = false; 
 	$param_type="s";
@@ -109,7 +114,8 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	$result = $db->runQuery("SELECT * FROM payment WHERE txn_id = ?",$param_type,$param_value_array);
 	if(empty($result)) {
         $isUniqueTxnId = true;
-	}	
+	}
+
 	// check that receiver_email is your PayPal email
 	// check that payment_amount/payment_currency are correct
 	if($isPaymentCompleted) {
@@ -119,7 +125,6 @@ if (strcmp ($res, "VERIFIED") == 0) {
 	    error_log(date('[Y-m-d H:i e] '). "Vdddddddddddderified IPN: $req ". PHP_EOL, 3, LOG_FILE);
 	} 
 	// process payment and mark item as paid.
-	
 	
 	if(DEBUG == true) {
 		error_log(date('[Y-m-d H:i e] '). "Verified IPN: $req ". PHP_EOL, 3, LOG_FILE);

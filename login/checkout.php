@@ -9,71 +9,27 @@ if (isset($_SESSION["username"])) {
 } else {
     // since the username is not set in session, the user is not-logged-in
     // he is trying to access this page unauthorized
-    // so let's clear all session variables and redirect him to index
-    //session_unset();
-    //session_write_close();
     $url = "./index.php";
     header("Location: $url");
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Check Out Form</title>
+    <title>The Business Digital Solutions Check Out Form</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href=",/../images/icons/favicon.png" />
     <link rel="stylesheet" type="text/css" href="./../vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="./../css/util.css">
     <link rel="stylesheet" type="text/css" href="./../css/main.css">
-
-    <link href="assets/css/phppot-style.css" type="./../text/css" rel="stylesheet" />
     <link href="assets/css/user-registration.css" type="./../text/css" rel="stylesheet" />
     <script src="vendor/jquery/jquery-3.3.1.js" type="t./../ext/javascript"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <div id="paypal-button"></div>
-    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <script>
-        paypal.Button.render({
-            // Configure environment
-            env: 'sandbox',
-            client: {
-                sandbox: 'demo_sandbox_client_id',
-                production: 'demo_production_client_id'
-            },
-            // Customize button (optional)
-            locale: 'en_US',
-            style: {
-                size: 'small',
-                color: 'gold',
-                shape: 'pill',
-            },
-            // Set up a payment
-            payment: function(data, actions) {
-                return actions.payment.create({
-                    transactions: [{
-                        amount: {
-                            total: '0.01',
-                            currency: 'USD'
-                        }
-                    }]
-                });
-            },
-            // Execute the payment
-            onAuthorize: function(data, actions) {
-                return actions.payment.execute()
-                    .then(function() {
-                        // Show a confirmation message to the buyer
-                        window.alert('Thank you for your purchase!');
-                    });
-            }
-        }, '#paypal-button');
-    </script>
     <style>
         body {
             font-family: Arial;
@@ -188,44 +144,39 @@ if (isset($_SESSION["username"])) {
 </head>
 
 <body class="animsition">
-
     <!-- Header -->
     <header class="header1">
         <!-- Header desktop -->
         <div class="container-menu-header">
-            <div class="topbar">
-
-            </div>
-
             <div class="wrap_header">
                 <!-- Logo -->
                 <a href="index.html">
                     <img src="./../images/icons/tbds.jpeg" width="200" height="80" alt="IMG-LOGO">
                 </a>
-
                 <!-- Menu -->
                 <div class="wrap_menu">
                     <nav class="menu">
                         <ul class="main_menu">
                             <li>
-                                <a href="./../index.php">HOME</a>
+                                <a href="./../index.php">Home</a>
                             </li>
                             <li>
-                                <a href="./../index.php#Products">SHOP</a>
+                                <a href="./../index.php#Products">Shop</a>
                             </li>
                             <li>
-                                <a href="contact.html">CONTACT</a>
+                                <a href="./../index.php#Contact">Contact Us</a>
                             </li>
                             <li>
-                                <a href="home.php">ADMIN DASHBOARD</a>
-                            </li>
-                            <li>
-                                <a href="about.html">ABOUT</a>
+                                <a href="about.html">About</a>
                             </li>
                             <li class="sale-noti">
-                                <a href="logout.php"><strong>LOG-OUT</strong></a>
+                                <a href="logout.php"><strong>Sign-out</strong></a>
                             </li>
-
+                            <li>
+                                <a href="home.php" class="flex-c-m size4 text-white bg-dark hov1 trans-0-4">
+                                    &nbsp; <small><strong>CUSTOMER DASHBOARD</strong></small> &nbsp;
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -253,26 +204,21 @@ if (isset($_SESSION["username"])) {
                 </div>
             </div>
         </div>
-        <br /><br /><br /><br /><br /><br />
-
+        <br /><br /><br />
         <h2 class="text text-center text-dark mt-4 "><small>INVOICE CHECKOUT FORM</small></h2>
         <p class="text text-dark text-center mt-4">Please Complete The Form Below To Complete Your Order!</p>
         <div class="row mt-4">
             <div class="col-75">
                 <div class="container">
 
-                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr"
-            method="post" target="_top">
-            <input type='hidden' name='business'
-                value='PayPal Business Email'> <input type='hidden'
-                name='item_name' value='Camera'> <input type='hidden'
-                name='item_number' value='CAM#N1'> <input type='hidden'
-                name='amount' value='10'> <input type='hidden'
-                name='no_shipping' value='1'> <input type='hidden'
-                name='currency_code' value='USD'> <input type='hidden'
-                name='notify_url'
-                value='http://sitename/paypal-payment-gateway-integration-in-php/notify.php'>
-            
+                    <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type='hidden' name='business' value='climathe1@gmail.com'>
+                        <input type='hidden' name='item_name' value='hosting & domain'>
+                        <input type='hidden' name='item_number' value='CAM#N1'>
+                        <input type='hidden' name='amount' value='10'>
+                        <input type='hidden' name='no_shipping' value='1'>
+                        <input type='hidden' name='currency_code' value='USD'>
+                        <input type='hidden' name='notify_url' value='localhost/paypal-payment-gateway-integration-in-php/notify.php'>
 
                         <div class="row">
                             <div class="col-50">
@@ -302,42 +248,22 @@ if (isset($_SESSION["username"])) {
                                 <h3 class="text text-dark mt-4"> <small>PAYMENT OPTIONS</small></h3>
                                 <label class="mt-4" for="fname">Accepted Payments Methods</label>
                                 <div class="icon-container ">
-                                    <i class="fa fa-cc-visa" style="color:navy;"></i>
-                                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
-                                    <i class="fa fa-cc-discover" style="color:orange;"></i>
-
-                                    <i class="fa fa-cc-paypal" style="color:blue;"></i>
-                                </div>
-
-                                <label for="cname">Names Printed on Card</label>
-                                <input type="text" class="border border-dark" id="cname" name="cardname" placeholder="John More Doe" require />
-                                <label for="ccnum">Credit card number</label>
-                                <input type="text" class="border border-dark" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" require />
-                                <label for="expmonth">Exp Month</label>
-                                <input type="text" id="expmonth" class="border border-dark" name="expmonth" placeholder="September" required />
-                                <div class="row">
-                                    <div class="col-50">
-                                        <label for="expyear">Exp Year</label>
-                                        <input type="text" class="border border-dark" id="expyear" name="expyear" placeholder="2022" required />
-                                    </div>
-                                    <div class="col-50">
-                                        <label for="cvv">CVV</label>
-                                        <input type="text" id="cvv" class="border border-dark" name="cvv" placeholder="352" required />
-                                    </div>
+                                    <i class="fa fa-cc-paypal" style="color:blue;"></i> <input type="checkbox" name="paypal">
+                                    <p class="text text-primary">Direct Electronic Fund Transfer <input type="checkbox" name="eft"></p>
+                                    <hr />
+                                    <p class="text text-info">Banking Detail Will Be Emailed To You On CheckOut Invoice.</p>
                                 </div>
                             </div>
                         </div>
+
                         <label>
                             <input type="checkbox" name="sameadr"> Shipping address same as billing
                         </label>
 
-                        <input type='hidden' name='cancel_return'
-                value='http://sitename/paypal-payment-gateway-integration-in-php/cancel.php'>
-            <input type='hidden' name='return'
-                value='http://sitename/paypal-payment-gateway-integration-in-php/return.php'>
-            <input type="hidden" name="cmd" value="_xclick">
-                        <input type="submit" name="pay_now" id="pay_now"
-                Value="Pay Now" class="bg-dark btn btninfo" />
+                        <input type='hidden' name='cancel_return' value='localhost/paypal-payment-gateway-integration-in-php/cancel.php'>
+                        <input type='hidden' name='return' value='localhost/paypal-payment-gateway-integration-in-php/return.php'>
+                        <input type="hidden" name="cmd" value="_xclick">
+                        <input type="submit" name="pay_now" id="pay_now" Value="Pay Now" class="bg-dark btn btninfo" />
                     </form>
                 </div>
             </div>
@@ -366,7 +292,6 @@ if (isset($_SESSION["username"])) {
                         foreach ($_SESSION["cart_item"] as $item) {
                             $item_price = $item["quantity"] * $item["price_per_month"];
                     ?>
-
                             <p><a class="ext text-dark" href="#"> <small><?php echo $item["product_name"]; ?></small>
                                 </a> <span class="price"><?php echo '&nbsp; <small class="text text-dark">R' . number_format($item["price_per_month"], 2) . '</small>'; ?></span></p>
                     <?php
