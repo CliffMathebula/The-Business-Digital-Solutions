@@ -850,7 +850,7 @@ $db_handle = new DBController();
     </section>
     <!-- Banner video -->
     <section class="parallax0 parallax100" style="background-image: url(images/bg-video-01.jpg);">
-        
+
         <div class="overlay0 p-t-190 p-b-200">
             <div class="flex-col-c-m p-l-15 p-r-15">
                 <span class="m-text9 p-t-45 fs-20-sm">
@@ -858,15 +858,15 @@ $db_handle = new DBController();
                 </span>
                 <h3 class="l-text1 fs-35-sm">
                     book now
-                    
+
                 </h3>
                 <span class=" s-text4 hov5 cs-pointer p-t-25">
-                
+
                     Book Us for zoom meeting
                 </span>
                 <input type="date" class="form-control" />
                 <input type="time" class="form-control" />
- 
+
             </div>
         </div>
     </section>
