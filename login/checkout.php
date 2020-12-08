@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("DBController.php");
+
 if (isset($_SESSION["username"])) {
     if (!isset($_SESSION["cart_item"])) {
         header("Location: ../cart.php");
@@ -12,7 +14,32 @@ if (isset($_SESSION["username"])) {
     $url = "./index.php";
     header("Location: $url");
 }
+//select user details
+if (isset($_SESSION["username"])) {
+    $username = $_SESSION["username"];
+    if ($query = $mysqli->query("SELECT * FROM users_table WHERE username = '$username'")) {
+        if (mysqli_num_rows($query) >= 1) {
+            foreach ($query as $key => $value) {
+                $name = $value['name'];
+                $surname = $value['surname'];
+                $mobile = $value['mobile'];
+                $gender = $value['gender'];
+                $country = $value['country'];
+                $city = $value['city'];
+                $surbub = $value['surbub'];
+                $street = $value['street'];
+                $code = $value['code'];
+                $email = $value['email'];
+            }
+        } else {
+            echo "no data";
+        }
+    } else {
+        header('location:login.php');
+    }
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,6 +155,9 @@ if (isset($_SESSION["username"])) {
                 <li class="nav-item text-right">
                     <a href="../#Products" class="text text-dark">About Us</a>
                 </li>
+                <li class="nav-item text-right">
+                    <a href="logout.php" class="text text-primary">Sign Out</a>
+                </li>
             </ul>
             <ul class="navbar-nav navbar-nav-right">
                 <li class="nav-item dropdown">
@@ -152,7 +182,7 @@ if (isset($_SESSION["username"])) {
         </div>
     </nav>
 </div> <br /><br />
-<!-- Checkout fomr -->
+<!-- Checkout form -->
 <div class="mt-4">
     <div class="content-wrapper">
         <div class="row">
@@ -160,58 +190,64 @@ if (isset($_SESSION["username"])) {
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">CheckOut Form</h4>
-                        <p class="card-description">
-                            Fill the form below to complete CheckingOur Order
+                        <p class="text text-primary">
+                            <small> Available Payment Option : <b>Electronic Fund Transfer.</b></small> 
                         </p>
-                        <p class="alert alert-warning" id="success_tag"></p>
-                        <form class="forms-sample" id="checkout">
+                        <p class="alert alert-primary">Our Banking Details Are Attached On Order Confirmation Email Also On The Receipt Attached! </p>
+                        
+                        <p class="alert alert-success" id="success_tag"></p>
+                        <form class="forms-sample mt-4" id="checkout">
                             <div class="form-group">
                                 <label for="exampleInputUsername1">First Name</label>
-                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" required>
+                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name" value="<?php echo $name; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Last Name</label>
-                                <input type="text" class="form-control" id="lastname" placeholder="Last Name" required>
+                                <input type="text" class="form-control" id="lastname" placeholder="Last Name" value="<?php echo $surname; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputUsername1">Mobile Number</label>
-                                <input type="number" class="form-control" id="mobile" name="mobile" placeholder="0659056171" required>
+                                <input type="number" class="form-control" id="mobile" name="mobile" placeholder="0659056171" value="<?php echo $mobile; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" value="<?php echo $email; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="SelectGender">Gender</label>
-                                <select class="form-control" id="SelectGender" name="SelectGender" required>
-                                    <option vale="Male">Male</option>
-                                    <option value="Female">Female</option>
+                                <select class="form-control" id="gender" name="SelectGender" required>
+                                    <option vale="<?php echo $gender; ?>"><?php echo $gender; ?></option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="InputCity1">Country</label>
-                                <input type="text" class="form-control" id="country" name="country" placeholder="Country" required>
+                                <input type="text" class="form-control" id="country" name="country" placeholder="Country" value="<?php echo $country; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="InputCity1">City</label>
-                                <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                                <input type="text" class="form-control" id="city" name="city" placeholder="City" value="<?php echo $city; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="InputCity1">Surbub</label>
-                                <input type="text" class="form-control" id="surbub" id="surbub" placeholder="Surbub" required>
+                                <input type="text" class="form-control" name="surbub" id="surbub" placeholder="Surbub" value="<?php echo $surbub; ?>" required>
                             </div>
                             <div class="form-group">
                                 <label for="Textarea1">Street Address</label>
-                                <textarea class="form-control" id="street_address" name="street_address" rows="4" required></textarea>
+                                <input type="text" class="form-control" id="street" name="street" placeholder="Street Address" value="<?php echo $street; ?>" required>
                             </div>
+
+                            <div class="form-group">
+                                <label for="InputCity1">Postal Code</label>
+                                <input type="number" class="form-control" id="code" name="code" placeholder="Postal Code" value="<?php echo $code; ?>" required>
+                            </div>
+
                             <div class="form-group">
                                 <label class="form-check-label text-success">
                                     <input type="checkbox" id="ckeckbox" name="ckeckbox" class="form-control mt-2" required>
                                     <strong> By ticking this checkbox, you officially accept our terms & Conditions! </strong>
                                 </label>
                             </div>
-                            <button type="submit" id="submit" name="submit" class="btn btn-primary mr-2">Submit</button>
-                            <button class="btn btn-light">Cancel</button>
+                            <button type="submit" id="submit" name="submit" class="btn btn-primary btn-block">Check-Out</button>
                         </form>
                     </div>
                 </div>
@@ -259,7 +295,7 @@ if (isset($_SESSION["username"])) {
                                     foreach ($_SESSION["cart_item"] as $item) {
                                         $total_price += ($item["price_per_month"] * $item["quantity"]);
                                     }
-                                    $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
+                               $_SESSION['total_price'] = $total = number_format($total_price, 2) + number_format($total_price, 2) * 0.15;
                                     echo 'R' . number_format($total, 2);
                                 } else {
                                     echo 'R.0.00';
@@ -300,9 +336,8 @@ if (isset($_SESSION["username"])) {
     //page onload
     $(document).ready(function() {
         /** Auto Refresh Pages Refresh  **/
-        setInterval(function() {
-            $("#items").load('items.php')
-        }, 1000);
+        $('#success_tag').hide();
+
         checkout();
     });
 
@@ -319,10 +354,17 @@ if (isset($_SESSION["username"])) {
                 success: function(data) {
                     //alert(data);
                     $('#success_tag').html(data);
+                },
+                complete: function() {
+                    $('body, html').animate({
+                        scrollTop: $('body').offset().top
+                    }, 'slow');
                 }
             });
-
-            $('#checkout_status').show();
+            $('#success_tag').show();
+            var delay = 2000; 
+            var url = 'home.php'
+            setTimeout(function(){ window.location = url; }, delay);
             return false;
         });
     }

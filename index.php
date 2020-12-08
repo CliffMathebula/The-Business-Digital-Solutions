@@ -3,6 +3,7 @@ session_start();
 require_once("models/dbcontroller.php");
 $db_handle = new DBController();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -151,7 +152,6 @@ $db_handle = new DBController();
                         </ul>
                     </nav>
                 </div>
-
                 <!-- Header Icon -->
                 <div class="header-icons">
 
@@ -691,7 +691,7 @@ $db_handle = new DBController();
                             </div>
                         </div>
                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
+                            <!-- Block -->
                             <div class="block2">
                                 <div class="card">
                                     <div class="card-body">
@@ -848,28 +848,12 @@ $db_handle = new DBController();
             </div>
         </div>
     </section>
-    <!-- Banner video -->
-    <section class="parallax0 parallax100" style="background-image: url(images/bg-video-01.jpg);">
-
-        <div class="overlay0 p-t-190 p-b-200">
-            <div class="flex-col-c-m p-l-15 p-r-15">
-                <span class="m-text9 p-t-45 fs-20-sm">
-                    Book Us For A Meeting
-                </span>
-                <h3 class="l-text1 fs-35-sm">
-                    book now
-
-                </h3>
-                <span class=" s-text4 hov5 cs-pointer p-t-25">
-
-                    Book Us for zoom meeting
-                </span>
-                <input type="date" class="form-control" />
-                <input type="time" class="form-control" />
-
-            </div>
-        </div>
-    </section>
+    <!-- zoom -->
+    <section class="parallax0 parallax100" id="book-us">
+   <!-- Calendly inline widget begin -->
+<div class="calendly-inline-widget" data-url="https://calendly.com/climathe1" style="min-width:320px;height:630px;"></div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js"></script>
+<!-- Calendly inline widget end -->  </section>
     <!-- contact us -->
     <section>
         <div class="sec-title p-b-52 p-l-15 p-r-15">
@@ -878,7 +862,6 @@ $db_handle = new DBController();
                 <h1 class="m-text5 t-center">
                     Contact Us
                 </h1><br />
-
                 <p class="text text-center text-lg">
                     <a href="https://www.facebook.com/thebusinessdigitalsolutions" class="topbar-social-item fa fa-facebook"></a>
                     <a href="https://api.whatsapp.com/send?phone=+27659056171&text=Hi%20There! Please Send Us Your Message, We Will Reply To your Message As Soon as Possible." class="topbar-social-item fa fa-whatsapp"></a>
@@ -900,7 +883,7 @@ $db_handle = new DBController();
             <div class="row">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3578.8054584655642!2d27.
 				92930631503072!3d-26.235509983423835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
-				1!2m1!1s1805%20Msimang%20Street%20Orlando%20east%20Soweto%201804!5e0!3m2!1sen!2sza!4v1602323850190!5m2!1sen!2sza" width="1200" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+				1!2m1!1s1805%20Msimang%20Street%20Orlando%20east%20Soweto%201804!5e0!3m2!1sen!2sza!4v1602323850190!5m2!1sen!2sza" width="1400" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
         </div>
     </section>
@@ -914,15 +897,15 @@ $db_handle = new DBController();
                 <div class="flex-c-m size22 bg0 s-text21 pos-relative" id="email_message">
                 </div>
                 <div class="bo4 of-hidden size15 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Full Name">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="name" placeholder="Full Name" required>
                 </div>
                 <div class="bo4 of-hidden size15 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="phone-number" placeholder="Phone Number">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="number" name="phone-number" placeholder="Phone Number" required>
                 </div>
                 <div class="bo4 of-hidden size15 m-b-20">
-                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="email" placeholder="Email Address">
+                    <input class="sizefull s-text7 p-l-22 p-r-22" type="text" name="email" placeholder="Email Address" required>
                 </div>
-                <textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message"></textarea>
+                <textarea class="dis-block s-text7 size20 bo4 p-l-22 p-r-22 p-t-13 m-b-20" name="message" placeholder="Message" required></textarea>
                 <div class="w-size25">
                     <!-- Button -->
                     <button class="flex-c-m size2 bg1 bo-rad-23 hov1 m-text3 trans-0-4">

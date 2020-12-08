@@ -76,6 +76,7 @@ class Member
      */
     public function registerMember()
     {
+
         $isUsernameExists = $this->isUsernameExists($_POST["username"]);
         $isEmailExists = $this->isEmailExists($_POST["email"]);
         if ($isUsernameExists) {

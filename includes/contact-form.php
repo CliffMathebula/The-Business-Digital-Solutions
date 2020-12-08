@@ -24,7 +24,7 @@ if( !empty($_POST['name']) && !empty($_POST['email']) && isset($_POST['phone-num
     } else {
         $subject = '[Consulting] Contact Form Message';
     }
-    $message = '<b>Name:</b> '.$name.'<b>Contact Number:</b> '.$contact.'<br><b>Email:</b> '.$email.' <br> <p>'.$msg.'</p>';
+    $message = '<b>Name:</b> '.$name.'<br><b>Contact Number:</b> '.$contact.'<br><b>Email:</b> '.$email.' <br> <p><b> Message </b><br/>'.$msg.'</p>';
     $headers = "From: $from\n";
     $headers .= "MIME-Version: 1.0\n";
     $headers .= "Content-type: text/html; charset=iso-8859-1\n";
