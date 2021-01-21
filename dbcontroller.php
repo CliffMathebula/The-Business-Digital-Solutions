@@ -2,7 +2,7 @@
 class DBController {
 	private $host = "localhost";
 	private $user = "root";
-	private $password = "1989@Cliff";
+	private $password = "";
 	private $database = "tbds_hosting";
 	private $conn;
 	
